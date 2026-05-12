@@ -6,127 +6,128 @@ pygame.init()
 WIDTH, HEIGHT = 800, 600
 
 BLACK = (0, 0, 0)
+GREEN = (0, 120, 0)
 WHITE = (255, 255, 255)
-RED = (255, 0, 0)
-GREEN = (0, 128, 0)
-BLUE = (0, 0, 255)
+RED = (200, 0, 0)
+BLUE = (0, 0, 200)
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("飞行棋")
+pygame.display.set_caption("接龙游戏")
 
 clock = pygame.time.Clock()
 font = pygame.font.Font(None, 30)
 
-COLORS = ["红", "黄", "蓝", "绿"]
-START_POSITIONS = [0, 13, 26, 39]
+SUITS = ['♠', '♥', '♦', '♣']
+RANKS = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
 
-class Piece:
-    def __init__(self, color, position):
-        self.color = color
-        self.position = position
-        self.start_position = START_POSITIONS[COLORS.index(color)]
-        self.finished = False
+class Card:
+    def __init__(self, rank, suit):
+        self.rank = rank
+        self.suit = suit
+        self.face_up = False
+        self.x = 0
+        self.y = 0
+        self.dragging = False
     
-    def can_move(self, dice, board):
-        if self.finished:
-            return False
-        if self.position == -1:
-            return dice == 6
-        new_pos = self.position + dice
-        if new_pos >= 52:
-            return new_pos == 52
-        return True
+    def color(self):
+        return RED if self.suit in ['♥', '♦'] else BLACK
     
-    def move(self, dice, board):
-        if self.position == -1:
-            self.position = self.start_position
+    def value(self):
+        if self.rank == 'A':
+            return 1
+        elif self.rank == 'J':
+            return 11
+        elif self.rank == 'Q':
+            return 12
+        elif self.rank == 'K':
+            return 13
         else:
-            self.position = (self.position + dice) % 52
-            if self.position == self.start_position:
-                self.finished = True
-
-def roll_dice():
-    return random.randint(1, 6)
-
-def play():
-    players = []
-    for i in range(4):
-        players.append({
-            'pieces': [Piece(COLORS[i], -1) for _ in range(4)],
-            'color': COLORS[i],
-            'finished': 0
-        })
+            return int(self.rank)
     
-    current_player = 0
-    consecutive_sixes = 0
-    game_over = False
+    def draw(self):
+        pygame.draw.rect(screen, WHITE, (self.x, self.y, 70, 100), border_radius=5)
+        if self.face_up:
+            color = self.color()
+            text = font.render(f"{self.rank}{self.suit}", True, color)
+            screen.blit(text, (self.x + 10, self.y + 35))
+        else:
+            pygame.draw.rect(screen, BLUE, (self.x + 5, self.y + 5, 60, 90), border_radius=3)
+        
+        pygame.draw.rect(screen, BLACK, (self.x, self.y, 70, 100), 2, border_radius=5)
+
+def create_deck():
+    deck = [Card(rank, suit) for suit in SUITS for rank in RANKS]
+    random.shuffle(deck)
+    return deck
+
+def solitaire():
+    deck = create_deck()
     
-    while not game_over:
-        screen.fill(BLACK)
+    piles = []
+    for i in range(7):
+        pile = []
+        for j in range(i + 1):
+            card = deck.pop()
+            card.x = 50 + i * 100
+            card.y = 200 + j * 30
+            if j == i:
+                card.face_up = True
+            pile.append(card)
+        piles.append(pile)
+    
+    stock = deck
+    waste = []
+    foundations = [[] for _ in range(4)]
+    
+    selected = None
+    
+    running = True
+    while running:
+        screen.fill(GREEN)
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    dice = roll_dice()
-                    
-                    text = font.render(f"玩家 {players[current_player]['color']} 掷出: {dice}", True, WHITE)
-                    screen.fill(BLACK)
-                    screen.blit(text, (WIDTH//2 - text.get_width()//2, HEIGHT//2))
-                    pygame.display.update()
-                    pygame.time.wait(1000)
-                    
-                    if dice == 6:
-                        consecutive_sixes += 1
-                        if consecutive_sixes >= 3:
-                            consecutive_sixes = 0
-                            current_player = (current_player + 1) % 4
-                            continue
-                    else:
-                        consecutive_sixes = 0
-                    
-                    moved = False
-                    for piece in players[current_player]['pieces']:
-                        if piece.can_move(dice, None):
-                            piece.move(dice, None)
-                            if piece.finished:
-                                players[current_player]['finished'] += 1
-                            moved = True
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = event.pos
+                
+                if 50 <= x <= 120 and 50 <= y <= 150 and stock:
+                    waste.append(stock.pop())
+                    waste[-1].x = 200
+                    waste[-1].y = 50
+                    waste[-1].face_up = True
+                    if len(stock) == 0:
+                        stock = list(reversed(waste))
+                        waste = []
+                        for card in stock:
+                            card.face_up = False
+                            card.x = 50
+                            card.y = 50
+                
+                for i, pile in enumerate(piles):
+                    for j, card in enumerate(reversed(pile)):
+                        if card.face_up and (card.x <= x <= card.x + 70 and card.y <= y <= card.y + 100):
+                            selected = (i, len(pile) - 1 - j)
                             break
-                    
-                    if not moved or dice != 6:
-                        current_player = (current_player + 1) % 4
-                    
-                    if players[current_player]['finished'] == 4:
-                        game_over = True
+                    if selected:
+                        break
         
-        y_offset = 50
-        for i, player in enumerate(players):
-            player_text = font.render(f"{player['color']}: 完成 {player['finished']}/4", True, WHITE)
-            screen.blit(player_text, (10, y_offset + i * 30))
+        if waste:
+            waste[-1].draw()
         
-        for i, player in enumerate(players):
-            for piece in player['pieces']:
-                piece_text = font.render(f"{player['color']}棋子位置: {piece.position if piece.position >= 0 else '起点'}", True, WHITE)
-                screen.blit(piece_text, (10, y_offset + 150 + i * 30))
+        for i, pile in enumerate(piles):
+            for card in pile:
+                card.x = 50 + i * 100
+                card.draw()
         
-        current_text = font.render(f"当前玩家: {players[current_player]['color']}", True, GREEN)
-        screen.blit(current_text, (WIDTH - 200, 10))
+        pygame.draw.rect(screen, WHITE, (50, 50, 70, 100), 2, border_radius=5)
         
-        instruction_text = font.render("按空格键掷骰子", True, WHITE)
-        screen.blit(instruction_text, (WIDTH//2 - instruction_text.get_width()//2, HEIGHT - 50))
-        
-        if game_over:
-            winner_text = font.render(f"玩家 {players[current_player]['color']} 获胜!", True, GREEN)
-            screen.blit(winner_text, (WIDTH//2 - winner_text.get_width()//2, HEIGHT//2 - 50))
+        for i in range(4):
+            pygame.draw.rect(screen, WHITE, (450 + i * 100, 50, 70, 100), 2, border_radius=5)
         
         pygame.display.update()
         clock.tick(30)
-    
-    pygame.time.wait(5000)
-    pygame.quit()
 
 if __name__ == "__main__":
-    play()
+    solitaire()
