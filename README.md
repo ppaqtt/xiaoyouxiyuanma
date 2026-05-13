@@ -1,6 +1,6 @@
 # 🎮 Python 小游戏合集
 
-欢迎来到 Python 小游戏合集！这里包含了 **138个** 精美的 Python 小游戏，涵盖了各种类型和难度。
+欢迎来到 Python 小游戏合集！这里包含了 **128个** 精美的 Python 小游戏，涵盖了各种类型和难度。
 
 ## 📁 文件说明
 
@@ -37,7 +37,7 @@ python tetris.py              # 俄罗斯方块
 | 绞刑架 | hangman.py | 猜单词游戏 |
 | 石头剪刀布 | rock_paper_scissors.py | 人机对战 |
 
-### 2. 🕹️ 街机复刻（17个）
+### 2. 🕹️ 街机复刻（19个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 贪吃蛇 | snake_game.py | 经典街机 |
@@ -48,6 +48,7 @@ python tetris.py              # 俄罗斯方块
 | 俄罗斯方块 | tetris.py | 经典方块游戏 |
 | 打砖块 | breakout.py | 弹球打砖块 |
 | 扫雷 | minesweeper.py | 经典扫雷 |
+| 扫雷高级版 | minesweeper_advanced.py | 高级扫雷 |
 | 吃豆人 | pac_man.py | 经典迷宫 |
 | 大金刚 | donkey_kong.py | 平台跳跃 |
 | 太空侵略者 | space_invaders_classic.py | 经典射击 |
@@ -57,8 +58,9 @@ python tetris.py              # 俄罗斯方块
 | 打靶游戏 | shooting_range.py | 射击打靶 |
 | 桌球 | billiards.py | 简化台球 |
 | 推箱子 | sokoban_variants.py | 推箱子变种 |
+| 魂斗罗射击 | contra_shooter.py | 经典射击 |
 
-### 3. 🏰 策略塔防（10个）
+### 3. 🏰 策略塔防（11个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 塔防 | tower_defense.py | 经典塔防 |
@@ -69,6 +71,7 @@ python tetris.py              # 俄罗斯方块
 | 国际象棋 | chess_simple.py | 简化象棋 |
 | 大富翁 | monopoly_style.py | 买地收租 |
 | 五子棋 | gomoku.py | 双人对战 |
+| 在线五子棋 | online_gomoku.py | AI对战 |
 | 坦克大战 | tank_battle.py | 坦克射击 |
 | 卡牌构建 | card_builder_dbg.py | DBG卡牌 |
 
@@ -88,7 +91,7 @@ python tetris.py              # 俄罗斯方块
 | 卡牌Roguelike | card_roguelike.py | 杀戮尖塔风格 |
 | 动作Roguelike | action_roguelike.py | 动作风格 |
 
-### 5. 🏪 模拟经营（5个）
+### 5. 🏪 模拟经营（8个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 餐厅模拟器 | restaurant_sim.py | 经营餐厅 |
@@ -96,8 +99,11 @@ python tetris.py              # 俄罗斯方块
 | 商店经营 | shop_keeper.py | 开商店 |
 | 农场模拟器 | farm_simulator.py | 种庄稼 |
 | 沙盒建造者 | sandbox_builder.py | 自由建造 |
+| 医院模拟器 | hospital_sim.py | 医院经营 |
+| 学校模拟器 | school_sim.py | 学校管理 |
+| 动物园模拟器 | zoo_sim.py | 动物园管理 |
 
-### 6. 🧩 益智解谜（16个）
+### 6. 🧩 益智解谜（19个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 记忆配对 | memory_game.py | 翻牌配对 |
@@ -116,6 +122,9 @@ python tetris.py              # 俄罗斯方块
 | 时间控制 | time_manipulation.py | 时间控制 |
 | 时间循环 | time_loop_puzzle.py | 时间循环 |
 | 24点 | twenty_four.py | 算24点 |
+| 数织 | nonogram.py | 逻辑填空 |
+| 成语接龙 | idiom_game.py | 成语接龙 |
+| 七巧板 | tangram.py | 拼图游戏 |
 
 ### 7. 🎵 音乐创意（7个）
 | 游戏 | 文件 | 说明 |
@@ -128,7 +137,7 @@ python tetris.py              # 俄罗斯方块
 | 物理沙盒 | physics_sandbox.py | 物理实验 |
 | 物理弹珠球 | physics_balls.py | 弹球物理 |
 
-### 8. 🎯 休闲街机（10个）
+### 8. 🎯 休闲街机（11个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 水果忍者 | fruit_ninja.py | 切水果 |
@@ -141,6 +150,7 @@ python tetris.py              # 俄罗斯方块
 | 躲避球 | dodge_game.py | 躲避障碍 |
 | 简单弹球 | pinball.py | 弹球机 |
 | 弹球物理版 | pinball_physics.py | 物理弹球 |
+| 彩虹岛冒险 | rainbow_island.py | 彩虹跑酷 |
 
 ### 9. 📚 文字学习（10个）
 | 游戏 | 文件 | 说明 |
@@ -167,12 +177,15 @@ python tetris.py              # 俄罗斯方块
 | 多米诺骨牌 | dominoes.py | 多米诺 |
 | 沙狐球 | shuffleboard.py | 沙狐球 |
 
-### 11. 🎉 多人派对（3个）
+### 11. 🎉 多人派对（6个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 多人派对对战 | multiplayer_party.py | 多人同屏 |
 | 派对游戏合集 | party_games.py | 多个小游戏 |
 | 知识问答比赛 | trivia_contest.py | 问答比赛 |
+| 谁是卧底 | spy_game.py | 卧底猜测 |
+| 疯狂猜词 | crazy_word_game.py | 猜词对战 |
+| 你画我猜 | draw_and_guess.py | 画画猜词 |
 
 ### 12. 🔫 生存射击（7个）
 | 游戏 | 文件 | 说明 |

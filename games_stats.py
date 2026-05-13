@@ -23,6 +23,7 @@ games_data = {
         ("俄罗斯方块", "tetris.py", "经典方块"),
         ("打砖块", "breakout.py", "弹球打砖"),
         ("扫雷", "minesweeper.py", "经典扫雷"),
+        ("扫雷高级版", "minesweeper_advanced.py", "高级扫雷"),
         ("吃豆人", "pac_man.py", "经典迷宫"),
         ("大金刚", "donkey_kong.py", "平台跳跃"),
         ("太空侵略者", "space_invaders_classic.py", "经典射击"),
@@ -32,6 +33,7 @@ games_data = {
         ("打靶游戏", "shooting_range.py", "射击打靶"),
         ("桌球", "billiards.py", "简化台球"),
         ("推箱子", "sokoban_variants.py", "推箱子变种"),
+        ("魂斗罗射击", "contra_shooter.py", "经典射击"),
     ],
     "🏰 策略塔防": [
         ("塔防", "tower_defense.py", "经典塔防"),
@@ -42,6 +44,7 @@ games_data = {
         ("国际象棋", "chess_simple.py", "简化象棋"),
         ("大富翁", "monopoly_style.py", "买地收租"),
         ("五子棋", "gomoku.py", "双人对战"),
+        ("在线五子棋", "online_gomoku.py", "AI对战"),
         ("坦克大战", "tank_battle.py", "坦克射击"),
         ("卡牌构建", "card_builder_dbg.py", "DBG卡牌"),
     ],
@@ -65,6 +68,9 @@ games_data = {
         ("商店经营", "shop_keeper.py", "开商店"),
         ("农场模拟器", "farm_simulator.py", "种庄稼"),
         ("沙盒建造者", "sandbox_builder.py", "自由建造"),
+        ("医院模拟器", "hospital_sim.py", "医院经营"),
+        ("学校模拟器", "school_sim.py", "学校管理"),
+        ("动物园模拟器", "zoo_sim.py", "动物园管理"),
     ],
     "🧩 益智解谜": [
         ("记忆配对", "memory_game.py", "翻牌配对"),
@@ -83,6 +89,9 @@ games_data = {
         ("时间控制", "time_manipulation.py", "时间控制"),
         ("时间循环", "time_loop_puzzle.py", "时间循环"),
         ("24点", "twenty_four.py", "算24点"),
+        ("数织", "nonogram.py", "逻辑填空"),
+        ("成语接龙", "idiom_game.py", "成语接龙"),
+        ("七巧板", "tangram.py", "拼图游戏"),
     ],
     "🎵 音乐创意": [
         ("音乐节奏大师", "rhythm_master.py", "节奏游戏"),
@@ -104,6 +113,7 @@ games_data = {
         ("躲避球", "dodge_game.py", "躲避障碍"),
         ("简单弹球", "pinball.py", "弹球机"),
         ("弹球物理版", "pinball_physics.py", "物理弹球"),
+        ("彩虹岛冒险", "rainbow_island.py", "彩虹跑酷"),
     ],
     "📚 文字学习": [
         ("打字练习", "typing_practice.py", "练打字"),
@@ -130,6 +140,9 @@ games_data = {
         ("多人派对对战", "multiplayer_party.py", "多人同屏"),
         ("派对游戏合集", "party_games.py", "多个小游戏"),
         ("知识问答比赛", "trivia_contest.py", "问答比赛"),
+        ("谁是卧底", "spy_game.py", "卧底猜测"),
+        ("疯狂猜词", "crazy_word_game.py", "猜词对战"),
+        ("你画我猜", "draw_and_guess.py", "画画猜词"),
     ],
     "🔫 生存射击": [
         ("太空射击", "space_shooter.py", "射击游戏"),

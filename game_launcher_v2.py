@@ -63,6 +63,7 @@ games_data = {
         {"name": "俄罗斯方块", "file": "tetris.py", "desc": "经典方块"},
         {"name": "打砖块", "file": "breakout.py", "desc": "弹球打砖"},
         {"name": "扫雷", "file": "minesweeper.py", "desc": "经典扫雷"},
+        {"name": "扫雷高级版", "file": "minesweeper_advanced.py", "desc": "高级扫雷"},
         {"name": "吃豆人", "file": "pac_man.py", "desc": "经典迷宫"},
         {"name": "大金刚", "file": "donkey_kong.py", "desc": "平台跳跃"},
         {"name": "太空侵略者", "file": "space_invaders_classic.py", "desc": "经典射击"},
@@ -72,6 +73,7 @@ games_data = {
         {"name": "打靶游戏", "file": "shooting_range.py", "desc": "射击打靶"},
         {"name": "桌球", "file": "billiards.py", "desc": "简化台球"},
         {"name": "推箱子", "file": "sokoban_variants.py", "desc": "推箱子变种"},
+        {"name": "魂斗罗射击", "file": "contra_shooter.py", "desc": "经典射击"},
     ],
     "🏰 策略塔防": [
         {"name": "塔防", "file": "tower_defense.py", "desc": "经典塔防"},
@@ -82,6 +84,7 @@ games_data = {
         {"name": "国际象棋", "file": "chess_simple.py", "desc": "简化象棋"},
         {"name": "大富翁", "file": "monopoly_style.py", "desc": "买地收租"},
         {"name": "五子棋", "file": "gomoku.py", "desc": "双人对战"},
+        {"name": "在线五子棋", "file": "online_gomoku.py", "desc": "AI对战"},
         {"name": "坦克大战", "file": "tank_battle.py", "desc": "坦克射击"},
         {"name": "卡牌构建", "file": "card_builder_dbg.py", "desc": "DBG卡牌"},
     ],
@@ -105,6 +108,9 @@ games_data = {
         {"name": "商店经营", "file": "shop_keeper.py", "desc": "开商店"},
         {"name": "农场模拟器", "file": "farm_simulator.py", "desc": "种庄稼"},
         {"name": "沙盒建造者", "file": "sandbox_builder.py", "desc": "自由建造"},
+        {"name": "医院模拟器", "file": "hospital_sim.py", "desc": "医院经营"},
+        {"name": "学校模拟器", "file": "school_sim.py", "desc": "学校管理"},
+        {"name": "动物园模拟器", "file": "zoo_sim.py", "desc": "动物园管理"},
     ],
     "🧩 益智解谜": [
         {"name": "记忆配对", "file": "memory_game.py", "desc": "翻牌配对"},
@@ -123,6 +129,9 @@ games_data = {
         {"name": "时间控制", "file": "time_manipulation.py", "desc": "时间控制"},
         {"name": "时间循环", "file": "time_loop_puzzle.py", "desc": "时间循环"},
         {"name": "24点", "file": "twenty_four.py", "desc": "算24点"},
+        {"name": "数织", "file": "nonogram.py", "desc": "逻辑填空"},
+        {"name": "成语接龙", "file": "idiom_game.py", "desc": "成语接龙"},
+        {"name": "七巧板", "file": "tangram.py", "desc": "拼图游戏"},
     ],
     "🎵 音乐创意": [
         {"name": "音乐节奏大师", "file": "rhythm_master.py", "desc": "节奏游戏"},
@@ -144,6 +153,7 @@ games_data = {
         {"name": "躲避球", "file": "dodge_game.py", "desc": "躲避障碍"},
         {"name": "简单弹球", "file": "pinball.py", "desc": "弹球机"},
         {"name": "弹球物理版", "file": "pinball_physics.py", "desc": "物理弹球"},
+        {"name": "彩虹岛冒险", "file": "rainbow_island.py", "desc": "彩虹跑酷"},
     ],
     "📚 文字学习": [
         {"name": "打字练习", "file": "typing_practice.py", "desc": "练打字"},
@@ -170,6 +180,9 @@ games_data = {
         {"name": "多人派对对战", "file": "multiplayer_party.py", "desc": "多人同屏"},
         {"name": "派对游戏合集", "file": "party_games.py", "desc": "多个小游戏"},
         {"name": "知识问答比赛", "file": "trivia_contest.py", "desc": "问答比赛"},
+        {"name": "谁是卧底", "file": "spy_game.py", "desc": "卧底猜测"},
+        {"name": "疯狂猜词", "file": "crazy_word_game.py", "desc": "猜词对战"},
+        {"name": "你画我猜", "file": "draw_and_guess.py", "desc": "画画猜词"},
     ],
     "🔫 生存射击": [
         {"name": "太空射击", "file": "space_shooter.py", "desc": "射击游戏"},
