@@ -2,18 +2,21 @@
 🎮 Python 小游戏合集 - 完整统计报告
 ================================================================================
 
-总游戏数: 128 个
-分类数: 15 个
+总游戏数: 144 个
+分类数: 16 个
 
 --------------------------------------------------------------------------------
 📊 游戏分类详细统计
 --------------------------------------------------------------------------------
 
-📝 经典文字 - 4个游戏
+📝 经典文字 - 7个游戏
    1. 猜数字 - guess_number.py - 猜1-100的随机数
    2. 井字棋 - tic_tac_toe.py - 经典双人对战
    3. 绞刑架 - hangman.py - 猜单词游戏
    4. 石头剪刀布 - rock_paper_scissors.py - 人机对战
+   5. 文字德州扑克 - text_poker.py - 德州扑克
+   6. 文字21点 - text_blackjack.py - 21点纸牌
+   7. 聊天机器人 - chat_bot.py - AI聊天
 
 🕹️ 街机复刻 - 19个游戏
    1. 贪吃蛇 - snake_game.py - 经典街机
@@ -145,7 +148,7 @@
    5. 疯狂猜词 - crazy_word_game.py - 猜词对战
    6. 你画我猜 - draw_and_guess.py - 画画猜词
 
-🔫 生存射击 - 7个游戏
+🔫 生存射击 - 9个游戏
    1. 太空射击 - space_shooter.py - 射击游戏
    2. 僵尸生存 - zombie_survival.py - 打僵尸
    3. 飞行模拟 - flight_sim.py - 开飞机
@@ -153,17 +156,32 @@
    5. 迷宫 - maze.py - 走迷宫
    6. 迷宫逃生 - maze_escape.py - 逃迷宫
    7. 密室逃脱 - escape_room.py - 找线索
+   8. 狙击精英 - sniper_game.py - 狙击游戏
+   9. 双摇杆射击 - twin_stick_shooter.py - 射击游戏
 
-🤖 放置自动 - 2个游戏
+🤖 放置自动 - 5个游戏
    1. 自动点击器 - auto_clicker.py - 自动点击
    2. 放置挂机游戏 - idle_incremental.py - 挂机
+   3. 点击英雄 - clicker_hero.py - 点击游戏
+   4. 农场自动种植 - farm_auto.py - 农场经营
+   5. 工厂生产线 - factory_sim.py - 工厂模拟
 
-🚗 赛车驾驶 - 3个游戏
+🚗 赛车驾驶 - 6个游戏
    1. 赛车 - racing.py - 赛车
    2. 双人赛车 - racing_2p.py - 双人赛车
    3. 飞行模拟 - flight_sim.py - 飞行
+   4. 2D赛车竞速 - racing_2d.py - 竞速赛车
+   5. 卡丁车赛道 - kart_racing.py - 卡丁车
+   6. 摩托车狂飙 - motorcycle_racing.py - 摩托竞速
 
-🎬 视觉叙事 - 2个游戏
+🎬 视觉叙事 - 5个游戏
    1. 视觉小说 - visual_novel.py - 剧情
    2. 密室逃脱 - escape_room.py - 逃脱
+   3. 互动故事冒险 - interactive_story.py - 互动剧情
+   4. 侦探推理小说 - detective_game.py - 侦探推理
+   5. 选择分支剧情 - branching_story.py - 剧情选择
+
+🔬 科学教育 - 2个游戏
+   1. 元素周期表 - element_game.py - 化学元素
+   2. 物理实验室 - physics_lab.py - 物理模拟
 

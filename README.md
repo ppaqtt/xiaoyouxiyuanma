@@ -1,6 +1,6 @@
 # 🎮 Python 小游戏合集
 
-欢迎来到 Python 小游戏合集！这里包含了 **128个** 精美的 Python 小游戏，涵盖了各种类型和难度。
+欢迎来到 Python 小游戏合集！这里包含了 **147个** 精美的 Python 小游戏，涵盖了各种类型和难度。
 
 ## 📁 文件说明
 
@@ -29,13 +29,16 @@ python tetris.py              # 俄罗斯方块
 
 ## 🎯 游戏分类
 
-### 1. 📝 经典文字游戏（4个）
+### 1. 📝 经典文字游戏（7个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 猜数字 | guess_number.py | 猜1-100的随机数 |
 | 井字棋 | tic_tac_toe.py | 经典双人对战 |
 | 绞刑架 | hangman.py | 猜单词游戏 |
 | 石头剪刀布 | rock_paper_scissors.py | 人机对战 |
+| 文字德州扑克 | text_poker.py | 德州扑克 |
+| 文字21点 | text_blackjack.py | 21点纸牌 |
+| 聊天机器人 | chat_bot.py | AI聊天 |
 
 ### 2. 🕹️ 街机复刻（19个）
 | 游戏 | 文件 | 说明 |
@@ -187,7 +190,7 @@ python tetris.py              # 俄罗斯方块
 | 疯狂猜词 | crazy_word_game.py | 猜词对战 |
 | 你画我猜 | draw_and_guess.py | 画画猜词 |
 
-### 12. 🔫 生存射击（7个）
+### 12. 🔫 生存射击（9个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 太空射击 | space_shooter.py | 射击游戏 |
@@ -197,25 +200,42 @@ python tetris.py              # 俄罗斯方块
 | 迷宫 | maze.py | 走迷宫 |
 | 迷宫逃生 | maze_escape.py | 逃迷宫 |
 | 密室逃脱 | escape_room.py | 找线索 |
+| 狙击精英 | sniper_game.py | 狙击游戏 |
+| 双摇杆射击 | twin_stick_shooter.py | 射击游戏 |
 
-### 13. 🤖 放置自动（2个）
+### 13. 🤖 放置自动（5个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 自动点击器 | auto_clicker.py | 自动点击 |
 | 放置挂机游戏 | idle_incremental.py | 挂机 |
+| 点击英雄 | clicker_hero.py | 点击游戏 |
+| 农场自动种植 | farm_auto.py | 农场经营 |
+| 工厂生产线 | factory_sim.py | 工厂模拟 |
 
-### 14. 🚗 赛车驾驶（3个）
+### 14. 🚗 赛车驾驶（6个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 赛车 | racing.py | 赛车 |
 | 双人赛车 | racing_2p.py | 双人赛车 |
 | 飞行模拟 | flight_sim.py | 飞行 |
+| 2D赛车竞速 | racing_2d.py | 竞速赛车 |
+| 卡丁车赛道 | kart_racing.py | 卡丁车 |
+| 摩托车狂飙 | motorcycle_racing.py | 摩托竞速 |
 
-### 15. 🎬 视觉叙事（2个）
+### 15. 🎬 视觉叙事（5个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 视觉小说 | visual_novel.py | 剧情 |
 | 密室逃脱 | escape_room.py | 逃脱 |
+| 互动故事冒险 | interactive_story.py | 互动剧情 |
+| 侦探推理小说 | detective_game.py | 侦探推理 |
+| 选择分支剧情 | branching_story.py | 剧情选择 |
+
+### 16. 🔬 科学教育（2个）
+| 游戏 | 文件 | 说明 |
+|------|------|------|
+| 元素周期表 | element_game.py | 化学元素 |
+| 物理实验室 | physics_lab.py | 物理模拟 |
 
 ## 🎨 游戏启动器功能
 
@@ -261,8 +281,8 @@ python tetris.py              # 俄罗斯方块
 
 ## 📊 统计数据
 
-- **总游戏数**：138个
-- **分类数**：15个
+- **总游戏数**：147个
+- **分类数**：16个
 - **主要依赖**：pygame
 - **语言**：Python
 - **界面**：中文

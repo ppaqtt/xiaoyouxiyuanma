@@ -45,6 +45,7 @@ categories = [
     {"name": "🤖 放置自动", "color": YELLOW},
     {"name": "🚗 赛车驾驶", "color": PURPLE},
     {"name": "🎬 视觉叙事", "color": BLUE},
+    {"name": "🔬 科学教育", "color": GREEN},
 ]
 
 games_data = {
@@ -53,6 +54,9 @@ games_data = {
         {"name": "井字棋", "file": "tic_tac_toe.py", "desc": "经典双人对战"},
         {"name": "绞刑架", "file": "hangman.py", "desc": "猜单词游戏"},
         {"name": "石头剪刀布", "file": "rock_paper_scissors.py", "desc": "人机对战"},
+        {"name": "文字德州扑克", "file": "text_poker.py", "desc": "德州扑克"},
+        {"name": "文字21点", "file": "text_blackjack.py", "desc": "21点纸牌"},
+        {"name": "聊天机器人", "file": "chat_bot.py", "desc": "AI聊天"},
     ],
     "🕹️ 街机复刻": [
         {"name": "贪吃蛇", "file": "snake_game.py", "desc": "经典街机"},
@@ -196,15 +200,39 @@ games_data = {
     "🤖 放置自动": [
         {"name": "自动点击器", "file": "auto_clicker.py", "desc": "自动点击"},
         {"name": "放置挂机游戏", "file": "idle_incremental.py", "desc": "挂机"},
+        {"name": "点击英雄", "file": "clicker_hero.py", "desc": "点击游戏"},
+        {"name": "农场自动种植", "file": "farm_auto.py", "desc": "农场经营"},
+        {"name": "工厂生产线", "file": "factory_sim.py", "desc": "工厂模拟"},
     ],
     "🚗 赛车驾驶": [
         {"name": "赛车", "file": "racing.py", "desc": "赛车"},
         {"name": "双人赛车", "file": "racing_2p.py", "desc": "双人赛车"},
         {"name": "飞行模拟", "file": "flight_sim.py", "desc": "飞行"},
+        {"name": "2D赛车竞速", "file": "racing_2d.py", "desc": "竞速赛车"},
+        {"name": "卡丁车赛道", "file": "kart_racing.py", "desc": "卡丁车"},
+        {"name": "摩托车狂飙", "file": "motorcycle_racing.py", "desc": "摩托竞速"},
     ],
     "🎬 视觉叙事": [
         {"name": "视觉小说", "file": "visual_novel.py", "desc": "剧情"},
         {"name": "密室逃脱", "file": "escape_room.py", "desc": "逃脱"},
+        {"name": "互动故事冒险", "file": "interactive_story.py", "desc": "互动剧情"},
+        {"name": "侦探推理小说", "file": "detective_game.py", "desc": "侦探推理"},
+        {"name": "选择分支剧情", "file": "branching_story.py", "desc": "剧情选择"},
+    ],
+    "🔬 科学教育": [
+        {"name": "元素周期表", "file": "element_game.py", "desc": "化学元素"},
+        {"name": "物理实验室", "file": "physics_lab.py", "desc": "物理模拟"},
+    ],
+    "🔫 生存射击": [
+        {"name": "太空射击", "file": "space_shooter.py", "desc": "射击游戏"},
+        {"name": "僵尸生存", "file": "zombie_survival.py", "desc": "打僵尸"},
+        {"name": "飞行模拟", "file": "flight_sim.py", "desc": "开飞机"},
+        {"name": "推理游戏", "file": "deduction_game.py", "desc": "推理"},
+        {"name": "迷宫", "file": "maze.py", "desc": "走迷宫"},
+        {"name": "迷宫逃生", "file": "maze_escape.py", "desc": "逃迷宫"},
+        {"name": "密室逃脱", "file": "escape_room.py", "desc": "找线索"},
+        {"name": "狙击精英", "file": "sniper_game.py", "desc": "狙击游戏"},
+        {"name": "双摇杆射击", "file": "twin_stick_shooter.py", "desc": "射击"},
     ],
 }
 

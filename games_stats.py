@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # Python 小游戏合集 - 完整统计
-# 共 138 个游戏
+# 共 147 个游戏
 
 import os
 
@@ -13,6 +13,9 @@ games_data = {
         ("井字棋", "tic_tac_toe.py", "经典双人对战"),
         ("绞刑架", "hangman.py", "猜单词游戏"),
         ("石头剪刀布", "rock_paper_scissors.py", "人机对战"),
+        ("文字德州扑克", "text_poker.py", "德州扑克"),
+        ("文字21点", "text_blackjack.py", "21点纸牌"),
+        ("聊天机器人", "chat_bot.py", "AI聊天"),
     ],
     "🕹️ 街机复刻": [
         ("贪吃蛇", "snake_game.py", "经典街机"),
@@ -152,19 +155,34 @@ games_data = {
         ("迷宫", "maze.py", "走迷宫"),
         ("迷宫逃生", "maze_escape.py", "逃迷宫"),
         ("密室逃脱", "escape_room.py", "找线索"),
+        ("狙击精英", "sniper_game.py", "狙击游戏"),
+        ("双摇杆射击", "twin_stick_shooter.py", "射击游戏"),
     ],
     "🤖 放置自动": [
         ("自动点击器", "auto_clicker.py", "自动点击"),
         ("放置挂机游戏", "idle_incremental.py", "挂机"),
+        ("点击英雄", "clicker_hero.py", "点击游戏"),
+        ("农场自动种植", "farm_auto.py", "农场经营"),
+        ("工厂生产线", "factory_sim.py", "工厂模拟"),
     ],
     "🚗 赛车驾驶": [
         ("赛车", "racing.py", "赛车"),
         ("双人赛车", "racing_2p.py", "双人赛车"),
         ("飞行模拟", "flight_sim.py", "飞行"),
+        ("2D赛车竞速", "racing_2d.py", "竞速赛车"),
+        ("卡丁车赛道", "kart_racing.py", "卡丁车"),
+        ("摩托车狂飙", "motorcycle_racing.py", "摩托竞速"),
     ],
     "🎬 视觉叙事": [
         ("视觉小说", "visual_novel.py", "剧情"),
         ("密室逃脱", "escape_room.py", "逃脱"),
+        ("互动故事冒险", "interactive_story.py", "互动剧情"),
+        ("侦探推理小说", "detective_game.py", "侦探推理"),
+        ("选择分支剧情", "branching_story.py", "剧情选择"),
+    ],
+    "🔬 科学教育": [
+        ("元素周期表", "element_game.py", "化学元素"),
+        ("物理实验室", "physics_lab.py", "物理模拟"),
     ],
 }
 
