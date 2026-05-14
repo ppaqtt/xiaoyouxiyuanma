@@ -1,6 +1,6 @@
 # 🎮 Python 小游戏合集
 
-欢迎来到 Python 小游戏合集！这里包含了 **149个** 精美的 Python 小游戏，涵盖了各种类型和难度。
+欢迎来到 Python 小游戏合集！这里包含了 **172个** 精美的 Python 小游戏，涵盖了18个分类和各种类型难度。
 
 ## 📁 文件说明
 
@@ -29,7 +29,7 @@ python tetris.py              # 俄罗斯方块
 
 ## 🎯 游戏分类
 
-### 1. 📝 经典文字游戏（7个）
+### 1. 📝 经典文字游戏（10个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 猜数字 | guess_number.py | 猜1-100的随机数 |
@@ -39,6 +39,9 @@ python tetris.py              # 俄罗斯方块
 | 文字德州扑克 | text_poker.py | 德州扑克 |
 | 文字21点 | text_blackjack.py | 21点纸牌 |
 | 聊天机器人 | chat_bot.py | AI聊天 |
+| 文字冒险 | adventure_text.py | 桃花源记冒险 |
+| 密码破译 | code_breaker.py | 密码学游戏 |
+| 对联大师 | couplet_master.py | 对联文化 |
 
 ### 2. 🕹️ 街机复刻（19个）
 | 游戏 | 文件 | 说明 |
@@ -48,8 +51,8 @@ python tetris.py              # 俄罗斯方块
 | 贪吃蛇双人 | snake_2p.py | 双人对战模式 |
 | 贪吃蛇变种 | snake_variants.py | 多种模式 |
 | 2048 | game_2048.py | 数字合并 |
-| 俄罗斯方块 | tetris.py | 经典方块游戏 |
-| 打砖块 | breakout.py | 弹球打砖块 |
+| 俄罗斯方块 | tetris.py | 经典方块 |
+| 打砖块 | breakout.py | 弹球打砖 |
 | 扫雷 | minesweeper.py | 经典扫雷 |
 | 扫雷高级版 | minesweeper_advanced.py | 高级扫雷 |
 | 吃豆人 | pac_man.py | 经典迷宫 |
@@ -88,18 +91,18 @@ python tetris.py              # 俄罗斯方块
 | 文字RPG | text_rpg.py | 文字冒险 |
 | 像素冒险RPG | pixel_quest_rpg.py | 像素冒险 |
 | 类银河恶魔城 | metroidvania_simple.py | 探索解锁 |
-| 平台跳跃 | platformer.py | 超级玛丽风格 |
+| 平台跳跃 | platformer.py | 超级玛丽 |
 | 横版射击 | horizontal_shooter.py | 弹幕射击 |
 | Roguelike地牢 | roguelike_dungeon.py | 随机地牢 |
 | Roguelike战术 | roguelike_tactical.py | 回合制 |
-| 卡牌Roguelike | card_roguelike.py | 杀戮尖塔风格 |
+| 卡牌Roguelike | card_roguelike.py | 杀戮尖塔 |
 | 动作Roguelike | action_roguelike.py | 动作风格 |
 
 ### 5. 🏪 模拟经营（8个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 餐厅模拟器 | restaurant_sim.py | 经营餐厅 |
-| 城市建造 | city_builder.py | 建造城市 |
+| 城市建造 | city_builder.py | 建城市 |
 | 商店经营 | shop_keeper.py | 开商店 |
 | 农场模拟器 | farm_simulator.py | 种庄稼 |
 | 沙盒建造者 | sandbox_builder.py | 自由建造 |
@@ -118,7 +121,7 @@ python tetris.py              # 俄罗斯方块
 | 数独 | sudoku.py | 数字数独 |
 | 连连看 | lianliankan.py | 连连看 |
 | 连连看麻将版 | mahjong_link.py | 麻将配对 |
-| 消消乐 | match_three.py | 三消游戏 |
+| 消消乐 | match_three.py | 三消 |
 | 找不同 | spot_difference.py | 找不同 |
 | 管道连接 | pipe_builder.py | 接管道 |
 | 逻辑解谜 | logic_puzzle.py | 电路连接 |
@@ -172,7 +175,7 @@ python tetris.py              # 俄罗斯方块
 | 单词拼写 | word_scramble.py | 拼单词 |
 | 数字赛马 | number_race.py | 数字比赛 |
 
-### 10. ♠️ 卡牌桌游（7个）
+### 10. ♠️ 卡牌桌游（10个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 21点 | blackjack.py | 21点 |
@@ -182,8 +185,11 @@ python tetris.py              # 俄罗斯方块
 | 骰子游戏 | dice_games.py | 骰子 |
 | 多米诺骨牌 | dominoes.py | 多米诺 |
 | 沙狐球 | shuffleboard.py | 沙狐球 |
+| 梭哈扑克 | stud_poker.py | 梭哈游戏 |
+| 斗地主 | landlord.py | 三人斗地主 |
+| 桥牌 | bridge.py | 四人桥牌 |
 
-### 11. 🎉 多人派对（6个）
+### 11. 🎉 多人派对（9个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 多人派对对战 | multiplayer_party.py | 多人同屏 |
@@ -192,6 +198,9 @@ python tetris.py              # 俄罗斯方块
 | 谁是卧底 | spy_game.py | 卧底猜测 |
 | 疯狂猜词 | crazy_word_game.py | 猜词对战 |
 | 你画我猜 | draw_and_guess.py | 画画猜词 |
+| 多人知识竞赛 | multiplayer_quiz.py | 多人答题 |
+| 多人记忆挑战 | multiplayer_memory.py | 记忆对战 |
+| 多人找不同 | multiplayer_spot_diff.py | 找茬对战 |
 
 ### 12. 🔫 生存射击（9个）
 | 游戏 | 文件 | 说明 |
@@ -204,9 +213,9 @@ python tetris.py              # 俄罗斯方块
 | 迷宫逃生 | maze_escape.py | 逃迷宫 |
 | 密室逃脱 | escape_room.py | 找线索 |
 | 狙击精英 | sniper_game.py | 狙击游戏 |
-| 双摇杆射击 | twin_stick_shooter.py | 射击游戏 |
+| 双摇杆射击 | twin_stick_shooter.py | 射击 |
 
-### 13. 🤖 放置自动（5个）
+### 13. 🤖 放置自动（8个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 自动点击器 | auto_clicker.py | 自动点击 |
@@ -214,6 +223,9 @@ python tetris.py              # 俄罗斯方块
 | 点击英雄 | clicker_hero.py | 点击游戏 |
 | 农场自动种植 | farm_auto.py | 农场经营 |
 | 工厂生产线 | factory_sim.py | 工厂模拟 |
+| 放置进化 | idle_evolution.py | 生物进化 |
+| 自动采矿 | idle_mining.py | 资源收集 |
+| 放置塔防 | idle_tower_defense.py | 挂机防御 |
 
 ### 14. 🚗 赛车驾驶（6个）
 | 游戏 | 文件 | 说明 |
@@ -225,7 +237,7 @@ python tetris.py              # 俄罗斯方块
 | 卡丁车赛道 | kart_racing.py | 卡丁车 |
 | 摩托车狂飙 | motorcycle_racing.py | 摩托竞速 |
 
-### 15. 🎬 视觉叙事（5个）
+### 15. 🎬 视觉叙事（8个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 视觉小说 | visual_novel.py | 剧情 |
@@ -233,95 +245,78 @@ python tetris.py              # 俄罗斯方块
 | 互动故事冒险 | interactive_story.py | 互动剧情 |
 | 侦探推理小说 | detective_game.py | 侦探推理 |
 | 选择分支剧情 | branching_story.py | 剧情选择 |
+| 文字冒险RPG | text_adventure.py | 失落王国 |
+| 穿越时空 | time_travel.py | 时间旅行 |
+| 解谜小说 | mystery_novel.py | 庄园推理 |
 
-### 16. 🔬 科学教育（4个）
+### 16. 🔬 科学教育（7个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 元素周期表 | element_game.py | 化学元素 |
 | 物理实验室 | physics_lab.py | 物理模拟 |
 | 化学实验 | chemistry_lab.py | 实验模拟 |
 | 编程入门 | programming_tutor.py | 学编程 |
+| 数学实验室 | geometry_lab.py | 几何图形 |
+| 生物进化模拟 | evolution_sim.py | 遗传算法 |
+| 地理知识问答 | geography_quiz.py | 世界地理 |
 
-## 🎨 游戏启动器功能
+### 17. 🏃 竞速运动（3个）
+| 游戏 | 文件 | 说明 |
+|------|------|------|
+| 田径运动会 | athletics.py | 跑步跳跃 |
+| 游泳比赛 | swimming.py | 多种泳姿 |
+| 自行车竞赛 | cycling.py | 赛道骑行 |
 
-### 界面特点
+### 18. 🏋️ 体育竞技（3个）
+| 游戏 | 文件 | 说明 |
+|------|------|------|
+| 乒乓球 | table_tennis.py | 真实模拟 |
+| 网球 | tennis.py | 网球对战 |
+| 羽毛球 | badminton.py | 羽毛球竞技 |
+
+## 🎮 界面特点
+
+### 启动器功能
 - 🎨 美观的渐变界面
-- 🏷️ 16个游戏分类
+- 🏷️ 18个游戏分类
 - 🔍 实时搜索功能
 - 📱 响应式设计
-- ⌨️ 键盘快捷键
 
 ### 操作说明
-- **鼠标点击** - 选择并启动游戏
-- **方向键左/右** - 切换分类
-- **方向键上/下** - 滚动游戏列表
-- **键盘输入** - 搜索游戏
-- **ESC** - 退出启动器
-
-## 💡 游戏推荐
-
-### 适合新手
-1. 猜数字 - guess_number.py
-2. 2048 - game_2048.py
-3. 贪吃蛇 - snake_game.py
-4. 扫雷 - minesweeper.py
-
-### 策略爱好者
-1. 塔防豪华版 - tower_defense_deluxe.py
-2. 回合制战术 - tactical_warfare.py
-3. 国际象棋 - chess_simple.py
-4. 卡牌构建 - card_builder_dbg.py
-
-### RPG爱好者
-1. 像素冒险RPG - pixel_quest_rpg.py
-2. 回合制RPG - turn_based_rpg.py
-3. 卡牌Roguelike - card_roguelike.py
-4. 俯视角ARPG - top_down_arpg.py
-
-### 益智解谜
-1. 华容道 - huarong_dao.py
-2. 数独 - sudoku.py
-3. 一笔画 - one_stroke.py
-4. 时间控制 - time_manipulation.py
+- 🖱️ 鼠标点击分类切换
+- ⌨️ 方向键翻页
+- 🔤 输入搜索游戏
+- ▶️ 点击游戏直接启动
 
 ## 📊 统计数据
 
-- **总游戏数**：149个
-- **分类数**：16个
+- **总游戏数**：172个
+- **分类数**：18个
 - **主要依赖**：pygame
 - **语言**：Python
 - **界面**：中文
 
-## 🎮 系统要求
+## 📝 游戏开发说明
 
-- **Python**：3.6+
-- **pygame**：2.0+
-- **系统**：Windows / Mac / Linux
+所有游戏均为独立Python文件，使用pygame库开发。代码包含详细中文注释，适合学习参考。
 
-## 🔧 常见问题
+### 开发规范
+- 所有游戏使用UTF-8编码
+- 中文界面和注释
+- 统一的错误处理
+- 清晰的代码结构
 
-### 1. 找不到模块 pygame
-```bash
-pip install pygame
-```
+## 🤝 贡献指南
 
-### 2. 游戏启动失败
-- 检查 Python 版本
-- 确认 pygame 正确安装
-- 查看错误信息
+欢迎提交新的游戏！
 
-### 3. 游戏文件不存在
-- 确认文件在当前目录
-- 检查文件名拼写
+### 添加新游戏步骤
+1. 在 `/workspace` 目录创建新的Python文件
+2. 使用pygame库开发游戏
+3. 添加中文界面和注释
+4. 更新 `games_data` 字典到启动器
+5. 更新本README文档
 
-## 👥 贡献
+## 📜 许可证
 
-欢迎提交新游戏或改进建议！
-
-## 📝 许可证
-
-本游戏合集仅供学习和娱乐使用。
-
----
-
-🎉 祝您玩得开心！
+本项目仅供学习交流使用。
