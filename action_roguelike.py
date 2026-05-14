@@ -83,42 +83,42 @@ class Player:
         # 平台碰撞
         self.on_ground = False
         for plat in platforms:
-            if (self.x + self.width &gt; plat.x and 
-                self.x &lt; plat.x + plat.width and 
-                self.y + self.height &gt; plat.y and 
-                self.y + self.height &lt; plat.y + plat.height + 10 and 
-                self.vy &gt;= 0):
+            if (self.x + self.width > plat.x and 
+                self.x < plat.x + plat.width and 
+                self.y + self.height > plat.y and 
+                self.y + self.height < plat.y + plat.height + 10 and 
+                self.vy >= 0):
                 self.y = plat.y - self.height
                 self.vy = 0
                 self.on_ground = True
         
         # 边界检查
-        if self.x &lt; 0:
+        if self.x < 0:
             self.x = 0
-        if self.x &gt; WIDTH - self.width:
+        if self.x > WIDTH - self.width:
             self.x = WIDTH - self.width
-        if self.y &gt; HEIGHT:
+        if self.y > HEIGHT:
             self.hp = 0
         
         # 更新状态
-        if self.attack_cooldown &gt; 0:
+        if self.attack_cooldown > 0:
             self.attack_cooldown -= 1
         
-        if self.combo_timer &gt; 0:
+        if self.combo_timer > 0:
             self.combo_timer -= 1
         else:
             self.combo = 0
         
-        if self.invincible &gt; 0:
+        if self.invincible > 0:
             self.invincible -= 1
         
         if self.attacking:
             self.attack_timer -= 1
-            if self.attack_timer &lt;= 0:
+            if self.attack_timer <= 0:
                 self.attacking = False
     
     def attack(self):
-        if self.attack_cooldown &lt;= 0:
+        if self.attack_cooldown <= 0:
             self.attacking = True
             self.attack_timer = 15
             self.attack_cooldown = 25
@@ -128,8 +128,8 @@ class Player:
     
     def draw(self, surface):
         color = BLUE
-        if self.invincible &gt; 0:
-            if self.invincible % 4 &lt; 2:
+        if self.invincible > 0:
+            if self.invincible % 4 < 2:
                 color = WHITE
         
         pygame.draw.rect(surface, color, (self.x, self.y, self.width, self.height))
@@ -175,8 +175,8 @@ class Enemy:
     
     def update(self, platforms, player):
         # 向玩家移动
-        if abs(player.x - self.x) &lt; 300:
-            if player.x &gt; self.x:
+        if abs(player.x - self.x) < 300:
+            if player.x > self.x:
                 self.vx = self.speed
             else:
                 self.vx = -self.speed
@@ -187,15 +187,15 @@ class Enemy:
         
         # 平台碰撞
         for plat in platforms:
-            if (self.x + self.width &gt; plat.x and 
-                self.x &lt; plat.x + plat.width and 
-                self.y + self.height &gt; plat.y and 
-                self.y + self.height &lt; plat.y + plat.height + 10 and 
-                self.vy &gt;= 0):
+            if (self.x + self.width > plat.x and 
+                self.x < plat.x + plat.width and 
+                self.y + self.height > plat.y and 
+                self.y + self.height < plat.y + plat.height + 10 and 
+                self.vy >= 0):
                 self.y = plat.y - self.height
                 self.vy = 0
         
-        if self.x &lt; 0 or self.x &gt; WIDTH - self.width:
+        if self.x < 0 or self.x > WIDTH - self.width:
             self.vx *= -1
             self.x += self.vx
     
@@ -260,7 +260,7 @@ def generate_room():
         enemy_type = random.choice(enemy_types)
         enemies.append(Enemy(x, y, enemy_type))
     
-    if random.random() &lt; 0.5:
+    if random.random() < 0.5:
         item_types = ["health", "damage", "speed"]
         x = random.randint(100, WIDTH - 100)
         y = random.randint(200, 450)
@@ -322,7 +322,7 @@ while running:
                             enemy_rect = pygame.Rect(enemy.x, enemy.y, enemy.width, enemy.height)
                             if attack_rect.colliderect(enemy_rect):
                                 enemy.hp -= game.player.damage * (1 + combo * 0.2)
-                                if enemy.hp &lt;= 0:
+                                if enemy.hp <= 0:
                                     game.enemies.remove(enemy)
                                     game.kills += 1
             elif game.state == "gameover" or game.state == "victory":
@@ -346,7 +346,7 @@ while running:
         player_rect = pygame.Rect(game.player.x, game.player.y, game.player.width, game.player.height)
         for enemy in game.enemies:
             enemy_rect = pygame.Rect(enemy.x, enemy.y, enemy.width, enemy.height)
-            if player_rect.colliderect(enemy_rect) and game.player.invincible &lt;= 0:
+            if player_rect.colliderect(enemy_rect) and game.player.invincible <= 0:
                 game.player.hp -= enemy.damage
                 game.player.invincible = 60
                 game.player.vx = -10 if game.player.facing_right else 10
@@ -368,11 +368,11 @@ while running:
         if len(game.enemies) == 0 and player_rect.colliderect(exit_rect):
             game.level += 1
             game.generate_level()
-            if game.level &gt; 5:
+            if game.level > 5:
                 game.state = "victory"
         
         # 死亡检测
-        if game.player.hp &lt;= 0:
+        if game.player.hp <= 0:
             game.state = "gameover"
         
         # 绘制
@@ -400,7 +400,7 @@ while running:
         kills_text = font_medium.render(f"击杀: {game.kills}", True, WHITE)
         screen.blit(kills_text, (20, 100))
         
-        if game.player.combo &gt; 1:
+        if game.player.combo > 1:
             combo_text = font_large.render(f"连击 x{game.player.combo}!", True, GOLD)
             screen.blit(combo_text, (WIDTH//2 - combo_text.get_width()//2, 50))
         

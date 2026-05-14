@@ -58,8 +58,8 @@ def uno_game():
     winner = None
     
     def draw_card():
+        nonlocal draw_pile
         if len(draw_pile) == 0:
-            nonlocal draw_pile
             top_card = discard_pile.pop()
             draw_pile = discard_pile
             random.shuffle(draw_pile)

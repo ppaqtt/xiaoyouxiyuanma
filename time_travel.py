@@ -483,7 +483,7 @@ class Game:
         # 行动按钮
         y_pos = 500
         self.draw_button("开始任务", 200, y_pos, 180, 50, COLORS['bg_dark'], COLORS['green'])
-        self.draw_button("返回选择", 500, y_pos, 180, 50, COLORS['bg_dark'], COLORS['gray')
+        self.draw_button("返回选择", 500, y_pos, 180, 50, COLORS['bg_dark'], COLORS['gray'])
         self.draw_button("返回主菜单", 800, y_pos, 180, 50, COLORS['bg_dark'], COLORS['red'])
 
     def time_travel_animation(self, era_key):

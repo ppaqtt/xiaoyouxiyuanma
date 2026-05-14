@@ -665,7 +665,7 @@ class Game:
                       self.font_small, COLORS['green'] if interviewed else COLORS['orange'], 810, 380)
 
         if not interviewed:
-            self.draw_button("完成审讯", 810, 420, 150, 40, COLORS['ink'], COLORS['gold,
+            self.draw_button("完成审讯", 810, 420, 150, 40, COLORS['ink'], COLORS['gold'],
                            lambda: self.finish_interrogation())
 
     def ask_question(self, q_index):

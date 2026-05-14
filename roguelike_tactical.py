@@ -132,7 +132,7 @@ class Item:
 
 # 生成关卡
 def generate_level(level):
-    grid = [[1 for _ in range(GRID_WIDTH) for _ in range(GRID_HEIGHT)]
+    grid = [[1 for _ in range(GRID_WIDTH)] for _ in range(GRID_HEIGHT)]
     
     for x in range(1, GRID_WIDTH-1):
         for y in range(1, GRID_HEIGHT-1):
@@ -248,24 +248,24 @@ while running:
             gy = my // TILE_SIZE
             
             if game.state == "class_select":
-                if 200 &lt; mx &lt; 350 and 300 &lt; my &lt; 400:
+                if 200 < mx < 350 and 300 < my < 400:
                     game.player = Player("warrior", 1, 1)
                     game.state = "playing"
                     game.start_level()
                     game.message = "选择你的回合"
-                elif 325 &lt; mx &lt; 475 and 300 &lt; my &lt; 400:
+                elif 325 < mx < 475 and 300 < my < 400:
                     game.player = Player("archer", 1, 1)
                     game.state = "playing"
                     game.start_level()
                     game.message = "选择你的回合"
-                elif 450 &lt; mx &lt; 600 and 300 &lt; my &lt; 400:
+                elif 450 < mx < 600 and 300 < my < 400:
                     game.player = Player("mage", 1, 1)
                     game.state = "playing"
                     game.start_level()
                     game.message = "选择你的回合"
             
             elif game.state == "playing" and game.turn == "player" and not game.game_over:
-                if gx &lt; GRID_WIDTH and gy &lt; GRID_HEIGHT:
+                if gx < GRID_WIDTH and gy < GRID_HEIGHT:
                     if (gx, gy) in game.highlighted:
                         if game.action_mode == "move":
                             game.player.x = gx
@@ -278,7 +278,7 @@ while running:
                             for enemy in game.enemies[:]:
                                 if enemy.x == gx and enemy.y == gy:
                                     enemy.hp -= game.player.damage
-                                    if enemy.hp &lt;= 0:
+                                    if enemy.hp <= 0:
                                         game.enemies.remove(enemy)
                                         game.message = "击杀敌人！"
                                     else:
@@ -307,17 +307,17 @@ while running:
                             game.highlighted = []
                             for x in range(GRID_WIDTH):
                                 for y in range(GRID_HEIGHT):
-                                    if get_distance(game.player.x, game.player.y, x, y) &lt;= game.player.move_range and game.grid[y][x] == 0:
+                                    if get_distance(game.player.x, game.player.y, x, y) <= game.player.move_range and game.grid[y][x] == 0:
                                         game.highlighted.append((x, y))
                             game.message = "选择移动位置"
                         elif not game.player.acted:
                             game.action_mode = "attack"
                             game.highlighted = []
                             for enemy in game.enemies:
-                                if get_distance(game.player.x, game.player.y, enemy.x, enemy.y) &lt;= game.player.range:
+                                if get_distance(game.player.x, game.player.y, enemy.x, enemy.y) <= game.player.range:
                                     game.highlighted.append((enemy.x, enemy.y))
                             for item in game.items:
-                                if get_distance(game.player.x, game.player.y, item.x, item.y) &lt;= game.player.range:
+                                if get_distance(game.player.x, game.player.y, item.x, item.y) <= game.player.range:
                                     game.highlighted.append((item.x, item.y))
                             game.message = "选择攻击/拾取目标"
                     
@@ -356,27 +356,27 @@ while running:
         if game.turn == "enemy" and not game.game_over:
             for enemy in game.enemies:
                 dist = get_distance(enemy.x, enemy.y, game.player.x, game.player.y)
-                if dist &lt;= enemy.range:
+                if dist <= enemy.range:
                     game.player.hp -= enemy.damage
                     game.message = f"受到 {enemy.damage} 点伤害"
                 else:
-                    dx = 1 if game.player.x &gt; enemy.x else -1
-                    dy = 1 if game.player.y &gt; enemy.y else -1
+                    dx = 1 if game.player.x > enemy.x else -1
+                    dy = 1 if game.player.y > enemy.y else -1
                     for _ in range(enemy.move_range):
                         nx, ny = enemy.x + dx, enemy.y
-                        if 0 &lt;= nx &lt; GRID_WIDTH and game.grid[ny][nx] == 0:
+                        if 0 <= nx < GRID_WIDTH and game.grid[ny][nx] == 0:
                             enemy.x = nx
                         else:
                             ny = enemy.y + dy
-                            if 0 &lt;= ny &lt; GRID_HEIGHT and game.grid[ny][enemy.x] == 0:
+                            if 0 <= ny < GRID_HEIGHT and game.grid[ny][enemy.x] == 0:
                                 enemy.y = ny
             
-            if game.player.hp &lt;= 0:
+            if game.player.hp <= 0:
                 game.game_over = True
                 game.state = "gameover"
             elif len(game.enemies) == 0:
                 game.level += 1
-                if game.level &gt; 5:
+                if game.level > 5:
                     game.state = "victory"
                 else:
                     game.start_level()

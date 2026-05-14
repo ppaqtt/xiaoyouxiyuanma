@@ -284,11 +284,11 @@ class ChineseChess:
     
     def draw_ui(self):
         if not self.game_over:
-            turn_text = f'当前回合：{}方'.format('红' if self.current_player == Color.RED else '黑')
+            turn_text = '当前回合：{}方'.format('红' if self.current_player == Color.RED else '黑')
             text = self.font.render(turn_text, True, self.colors['text'])
             self.screen.blit(text, (20, 10))
         else:
-            winner_text = f'游戏结束！{}方获胜！'.format('红' if self.winner == Color.RED else '黑')
+            winner_text = '游戏结束！{}方获胜！'.format('红' if self.winner == Color.RED else '黑')
             text = self.large_font.render(winner_text, True, self.colors['red'])
             text_rect = text.get_rect(center=(self.width // 2, 30))
             self.screen.blit(text, text_rect)

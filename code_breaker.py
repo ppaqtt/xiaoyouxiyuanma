@@ -309,11 +309,11 @@ class CodeBreakerGame:
 
         # 1. 凯撒密码
         caesar_pairs = [
-            ("加密是保护信息安全的重要手段", "MJJXTIWGMWZIEPJSKIXDMJGISRXV"],
-            ("努力学习密码学知识", "SXYVLSYWITPIZIVQMGEHI"],
-            ("信息安全关乎每个人", "LQIVQIRXIHWIHYREZIV"],
-            ("密码破译需要智慧和耐心", "WLVJGLYHIHWZMGLJLITIZ"],
-            ("古典密码充满智慧", "JXDLXZWLJFPIFRXLMJ"]
+            ("加密是保护信息安全的重要手段", "MJJXTIWGMWZIEPJSKIXDMJGISRXV"),
+            ("努力学习密码学知识", "SXYVLSYWITPIZIVQMGEHI"),
+            ("信息安全关乎每个人", "LQIVQIRXIHWIHYREZIV"),
+            ("密码破译需要智慧和耐心", "WLVJGLYHIHWZMGLJLITIZ"),
+            ("古典密码充满智慧", "JXDLXZWLJFPIFRXLMJ")
         ]
         data["凯撒密码"] = random.choice(caesar_pairs)
 

@@ -694,7 +694,7 @@ class BridgeGame:
             suit_name = SUIT_NAMES.get(suit, '')
             label = f"{level}{suit_name}"
             
-            color = SUIT_COLORS.get(SUITS[['clubs', 'diamonds', 'hearts', 'spades'].index(suit)] if suit != 'no_trump' else 'spade'], BROWN)
+            color = SUIT_COLORS.get(SUITS[('clubs', 'diamonds', 'hearts', 'spades').index(suit) if suit != 'no_trump' else 'spade'], BROWN)
             
             rect = pygame.Rect(x, y_start, 60, 40)
             pygame.draw.rect(surface, color, rect)
