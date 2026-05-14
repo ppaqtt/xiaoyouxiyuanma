@@ -34,6 +34,7 @@ LIGHT_GRAY = (220, 220, 220)
 BG_COLOR = (35, 35, 50)
 PANEL_COLOR = (45, 45, 65)
 GRID_BG = (25, 25, 40)
+YELLOW = (255, 255, 0)
 
 # 网格设置
 GRID_SIZE = 32       # 32x32像素网格

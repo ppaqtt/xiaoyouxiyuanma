@@ -28,6 +28,7 @@ class Player:
         self.x = WIDTH // 2
         self.y = HEIGHT // 2
         self.speed = 4
+        self.radius = 15
         self.hp = 100
         self.max_hp = 100
         self.attack = 10

@@ -12,6 +12,7 @@ RED = (200, 0, 0)
 GREEN = (0, 200, 0)
 BLUE = (0, 100, 200)
 YELLOW = (255, 255, 0)
+PURPLE = (150, 50, 200)
 BROWN = (139, 69, 19)
 LIGHT_BROWN = (210, 180, 140)
 
@@ -51,7 +52,7 @@ def create_board():
         Tile("机会", "chance"),
         Tile("上海", "property", 600, 50),
         Tile("广州", "property", 400, 30),
-        Tile("税务局", "tax", tax=100),
+        Tile("税务局", "tax", rent=100),
         Tile("深圳", "property", 650, 55),
         Tile("成都", "property", 500, 40),
         Tile("武汉", "property", 500, 40),
@@ -62,7 +63,7 @@ def create_board():
         Tile("机会", "chance"),
         Tile("南京", "property", 600, 50),
         Tile("杭州", "property", 700, 60),
-        Tile("税务局", "tax", tax=150),
+        Tile("税务局", "tax", rent=150),
         Tile("苏州", "property", 500, 40),
         Tile("青岛", "property", 400, 30),
         Tile("厦门", "property", 450, 35),

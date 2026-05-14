@@ -15,6 +15,7 @@ BLUE = (0, 100, 200)
 YELLOW = (255, 255, 0)
 PURPLE = (128, 0, 128)
 ORANGE = (255, 165, 0)
+GRAY = (150, 150, 150)
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("派对游戏合集")

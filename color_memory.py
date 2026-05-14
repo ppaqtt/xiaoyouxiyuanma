@@ -52,7 +52,8 @@ def color_memory():
         for j in range(grid_size):
             x = 100 + j * 100
             y = 150 + i * 100
-            buttons.append(Button(x, y, COLORS[i * grid_size + j]))
+            color_idx = i * grid_size + j
+            buttons.append(Button(x, y, COLORS[color_idx % len(COLORS)]))
     
     sequence = []
     level = 1

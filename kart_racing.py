@@ -83,11 +83,11 @@ class Kart:
         # 车身
         pygame.draw.ellipse(screen, self.color, 
                            (self.x - self.width//2, self.y - self.height//2, 
-                            self.width, self.height), border_radius=15)
+                            self.width, self.height))
         
         # 车窗
         pygame.draw.rect(screen, (100, 180, 255), 
-                       (self.x - 10, self.y - 8, 20, 15), border_radius=4)
+                       (self.x - 10, self.y - 8, 20, 15))
         
         # 轮子
         pygame.draw.circle(screen, BLACK, (self.x - 20, self.y - 15), 8)
@@ -108,7 +108,7 @@ class Kart:
         if self.boost_power > 1.1:
             pygame.draw.rect(screen, YELLOW, 
                            (self.x - 5, self.y + self.height//2 - 5, 
-                            10, 15), border_radius=5)
+                            10, 15))
 
 class Item:
     def __init__(self, x, y, item_type):
@@ -252,7 +252,7 @@ class KartGame:
         self.player.draw()
         
         # HUD
-        pygame.draw.rect(screen, (0, 0, 0, 128), (10, 10, 180, 90), border_radius=10)
+        pygame.draw.rect(screen, (0, 0, 0, 128), (10, 10, 180, 90))
         
         score_text = self.font_medium.render(f"分数: {self.score}", True, YELLOW)
         pos_text = self.font_small.render(f"位置: {self.position}/4", True, WHITE)
