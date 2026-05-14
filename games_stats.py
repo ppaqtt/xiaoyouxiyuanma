@@ -45,6 +45,7 @@ games_data = {
         ("即时战略对战", "rts_battle.py", "实时战斗"),
         ("回合制战术", "tactical_warfare.py", "战棋游戏"),
         ("国际象棋", "chess_simple.py", "简化象棋"),
+        ("中国象棋", "chinese_chess.py", "经典象棋"),
         ("大富翁", "monopoly_style.py", "买地收租"),
         ("五子棋", "gomoku.py", "双人对战"),
         ("在线五子棋", "online_gomoku.py", "AI对战"),
@@ -104,6 +105,8 @@ games_data = {
         ("画画猜词", "draw_something.py", "猜词游戏"),
         ("物理沙盒", "physics_sandbox.py", "物理实验"),
         ("物理弹珠球", "physics_balls.py", "弹球物理"),
+        ("分形艺术", "fractal_art.py", "分形图案"),
+        ("音乐可视化", "music_visualizer.py", "音频可视化"),
     ],
     "🎯 休闲街机": [
         ("水果忍者", "fruit_ninja.py", "切水果"),
@@ -183,6 +186,8 @@ games_data = {
     "🔬 科学教育": [
         ("元素周期表", "element_game.py", "化学元素"),
         ("物理实验室", "physics_lab.py", "物理模拟"),
+        ("化学实验", "chemistry_lab.py", "实验模拟"),
+        ("编程入门", "programming_tutor.py", "学编程"),
     ],
 }
 

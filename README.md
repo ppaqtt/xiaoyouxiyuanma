@@ -1,6 +1,6 @@
 # 🎮 Python 小游戏合集
 
-欢迎来到 Python 小游戏合集！这里包含了 **147个** 精美的 Python 小游戏，涵盖了各种类型和难度。
+欢迎来到 Python 小游戏合集！这里包含了 **149个** 精美的 Python 小游戏，涵盖了各种类型和难度。
 
 ## 📁 文件说明
 
@@ -63,7 +63,7 @@ python tetris.py              # 俄罗斯方块
 | 推箱子 | sokoban_variants.py | 推箱子变种 |
 | 魂斗罗射击 | contra_shooter.py | 经典射击 |
 
-### 3. 🏰 策略塔防（11个）
+### 3. 🏰 策略塔防（12个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 塔防 | tower_defense.py | 经典塔防 |
@@ -72,6 +72,7 @@ python tetris.py              # 俄罗斯方块
 | 即时战略对战 | rts_battle.py | 实时战斗 |
 | 回合制战术 | tactical_warfare.py | 战棋游戏 |
 | 国际象棋 | chess_simple.py | 简化象棋 |
+| 中国象棋 | chinese_chess.py | 经典象棋 |
 | 大富翁 | monopoly_style.py | 买地收租 |
 | 五子棋 | gomoku.py | 双人对战 |
 | 在线五子棋 | online_gomoku.py | AI对战 |
@@ -129,7 +130,7 @@ python tetris.py              # 俄罗斯方块
 | 成语接龙 | idiom_game.py | 成语接龙 |
 | 七巧板 | tangram.py | 拼图游戏 |
 
-### 7. 🎵 音乐创意（7个）
+### 7. 🎵 音乐创意（9个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 音乐节奏大师 | rhythm_master.py | 节奏游戏 |
@@ -139,6 +140,8 @@ python tetris.py              # 俄罗斯方块
 | 画画猜词 | draw_something.py | 猜词游戏 |
 | 物理沙盒 | physics_sandbox.py | 物理实验 |
 | 物理弹珠球 | physics_balls.py | 弹球物理 |
+| 分形艺术 | fractal_art.py | 分形图案 |
+| 音乐可视化 | music_visualizer.py | 音频可视化 |
 
 ### 8. 🎯 休闲街机（11个）
 | 游戏 | 文件 | 说明 |
@@ -231,17 +234,19 @@ python tetris.py              # 俄罗斯方块
 | 侦探推理小说 | detective_game.py | 侦探推理 |
 | 选择分支剧情 | branching_story.py | 剧情选择 |
 
-### 16. 🔬 科学教育（2个）
+### 16. 🔬 科学教育（4个）
 | 游戏 | 文件 | 说明 |
 |------|------|------|
 | 元素周期表 | element_game.py | 化学元素 |
 | 物理实验室 | physics_lab.py | 物理模拟 |
+| 化学实验 | chemistry_lab.py | 实验模拟 |
+| 编程入门 | programming_tutor.py | 学编程 |
 
 ## 🎨 游戏启动器功能
 
 ### 界面特点
 - 🎨 美观的渐变界面
-- 🏷️ 15个游戏分类
+- 🏷️ 16个游戏分类
 - 🔍 实时搜索功能
 - 📱 响应式设计
 - ⌨️ 键盘快捷键
@@ -281,7 +286,7 @@ python tetris.py              # 俄罗斯方块
 
 ## 📊 统计数据
 
-- **总游戏数**：147个
+- **总游戏数**：149个
 - **分类数**：16个
 - **主要依赖**：pygame
 - **语言**：Python

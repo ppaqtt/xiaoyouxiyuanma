@@ -86,6 +86,7 @@ games_data = {
         {"name": "即时战略对战", "file": "rts_battle.py", "desc": "实时战斗"},
         {"name": "回合制战术", "file": "tactical_warfare.py", "desc": "战棋游戏"},
         {"name": "国际象棋", "file": "chess_simple.py", "desc": "简化象棋"},
+        {"name": "中国象棋", "file": "chinese_chess.py", "desc": "经典象棋"},
         {"name": "大富翁", "file": "monopoly_style.py", "desc": "买地收租"},
         {"name": "五子棋", "file": "gomoku.py", "desc": "双人对战"},
         {"name": "在线五子棋", "file": "online_gomoku.py", "desc": "AI对战"},
@@ -145,6 +146,8 @@ games_data = {
         {"name": "画画猜词", "file": "draw_something.py", "desc": "猜词游戏"},
         {"name": "物理沙盒", "file": "physics_sandbox.py", "desc": "物理实验"},
         {"name": "物理弹珠球", "file": "physics_balls.py", "desc": "弹球物理"},
+        {"name": "分形艺术", "file": "fractal_art.py", "desc": "分形图案"},
+        {"name": "音乐可视化", "file": "music_visualizer.py", "desc": "音频可视化"},
     ],
     "🎯 休闲街机": [
         {"name": "水果忍者", "file": "fruit_ninja.py", "desc": "切水果"},
@@ -222,6 +225,8 @@ games_data = {
     "🔬 科学教育": [
         {"name": "元素周期表", "file": "element_game.py", "desc": "化学元素"},
         {"name": "物理实验室", "file": "physics_lab.py", "desc": "物理模拟"},
+        {"name": "化学实验", "file": "chemistry_lab.py", "desc": "实验模拟"},
+        {"name": "编程入门", "file": "programming_tutor.py", "desc": "学编程"},
     ],
     "🔫 生存射击": [
         {"name": "太空射击", "file": "space_shooter.py", "desc": "射击游戏"},

@@ -2,7 +2,7 @@
 🎮 Python 小游戏合集 - 完整统计报告
 ================================================================================
 
-总游戏数: 144 个
+总游戏数: 149 个
 分类数: 16 个
 
 --------------------------------------------------------------------------------
@@ -39,18 +39,19 @@
   18. 推箱子 - sokoban_variants.py - 推箱子变种
   19. 魂斗罗射击 - contra_shooter.py - 经典射击
 
-🏰 策略塔防 - 11个游戏
+🏰 策略塔防 - 12个游戏
    1. 塔防 - tower_defense.py - 经典塔防
    2. 塔防豪华版 - tower_defense_deluxe.py - 6种塔类型
    3. 即时战略简化版 - mini_rts.py - 采集建造
    4. 即时战略对战 - rts_battle.py - 实时战斗
    5. 回合制战术 - tactical_warfare.py - 战棋游戏
    6. 国际象棋 - chess_simple.py - 简化象棋
-   7. 大富翁 - monopoly_style.py - 买地收租
-   8. 五子棋 - gomoku.py - 双人对战
-   9. 在线五子棋 - online_gomoku.py - AI对战
-  10. 坦克大战 - tank_battle.py - 坦克射击
-  11. 卡牌构建 - card_builder_dbg.py - DBG卡牌
+   7. 中国象棋 - chinese_chess.py - 经典象棋
+   8. 大富翁 - monopoly_style.py - 买地收租
+   9. 五子棋 - gomoku.py - 双人对战
+  10. 在线五子棋 - online_gomoku.py - AI对战
+  11. 坦克大战 - tank_battle.py - 坦克射击
+  12. 卡牌构建 - card_builder_dbg.py - DBG卡牌
 
 ⚔️ RPG冒险 - 12个游戏
    1. 简单RPG - simple_rpg.py - 基础RPG
@@ -97,7 +98,7 @@
   18. 成语接龙 - idiom_game.py - 成语接龙
   19. 七巧板 - tangram.py - 拼图游戏
 
-🎵 音乐创意 - 7个游戏
+🎵 音乐创意 - 9个游戏
    1. 音乐节奏大师 - rhythm_master.py - 节奏游戏
    2. 音乐生成器 - music_generator.py - 创作音乐
    3. 像素艺术 - pixel_art.py - 像素绘画
@@ -105,6 +106,8 @@
    5. 画画猜词 - draw_something.py - 猜词游戏
    6. 物理沙盒 - physics_sandbox.py - 物理实验
    7. 物理弹珠球 - physics_balls.py - 弹球物理
+   8. 分形艺术 - fractal_art.py - 分形图案
+   9. 音乐可视化 - music_visualizer.py - 音频可视化
 
 🎯 休闲街机 - 11个游戏
    1. 水果忍者 - fruit_ninja.py - 切水果
@@ -181,7 +184,9 @@
    4. 侦探推理小说 - detective_game.py - 侦探推理
    5. 选择分支剧情 - branching_story.py - 剧情选择
 
-🔬 科学教育 - 2个游戏
+🔬 科学教育 - 4个游戏
    1. 元素周期表 - element_game.py - 化学元素
    2. 物理实验室 - physics_lab.py - 物理模拟
+   3. 化学实验 - chemistry_lab.py - 实验模拟
+   4. 编程入门 - programming_tutor.py - 学编程
 
