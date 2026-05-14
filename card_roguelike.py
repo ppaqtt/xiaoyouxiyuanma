@@ -141,27 +141,27 @@ class GameState:
         self.message = f"战斗开始！面对 {self.enemy.name}"
 
     def play_card(self, card):
-        if self.player.energy &gt;= card.cost:
+        if self.player.energy >= card.cost:
             self.player.energy -= card.cost
             
             # 计算伤害
             damage = card.damage + self.player.strength
-            if damage &gt; 0:
+            if damage > 0:
                 # 先破甲
-                if self.enemy.block &gt; 0:
-                    if damage &gt;= self.enemy.block:
+                if self.enemy.block > 0:
+                    if damage >= self.enemy.block:
                         damage -= self.enemy.block
                         self.enemy.block = 0
                     else:
                         self.enemy.block -= damage
                         damage = 0
                 self.enemy.hp -= damage
-                if damage &gt; 0:
+                if damage > 0:
                     self.message = f"对 {self.enemy.name} 造成 {damage} 点伤害！"
             
             # 获得护甲
             block = card.block + self.player.dexterity
-            if block &gt; 0:
+            if block > 0:
                 self.player.block += block
                 self.message = f"获得 {block} 点护甲！"
             
@@ -179,25 +179,25 @@ class GameState:
             self.player.hand.remove(card)
             
             # 检查敌人死亡
-            if self.enemy.hp &lt;= 0:
+            if self.enemy.hp <= 0:
                 self.end_battle()
 
     def end_turn(self):
         # 敌人攻击
         damage = self.enemy.intent
-        if self.player.block &gt; 0:
-            if damage &gt;= self.player.block:
+        if self.player.block > 0:
+            if damage >= self.player.block:
                 damage -= self.player.block
                 self.player.block = 0
             else:
                 self.player.block -= damage
                 damage = 0
         self.player.hp -= damage
-        if damage &gt; 0:
+        if damage > 0:
             self.message = f"{self.enemy.name} 造成 {damage} 点伤害！"
         
         # 检查玩家死亡
-        if self.player.hp &lt;= 0:
+        if self.player.hp <= 0:
             self.state = "gameover"
             return
         
@@ -216,7 +216,7 @@ class GameState:
 
     def next_floor(self):
         self.current_node += 1
-        if self.current_node &gt;= len(self.map_nodes):
+        if self.current_node >= len(self.map_nodes):
             self.state = "victory"
             return
         
@@ -274,8 +274,8 @@ while running:
                 for i in range(len(game.map_nodes)):
                     node_x = 100 + i * 70
                     node_y = 300
-                    if (node_x - 30 &lt; mouse_pos[0] &lt; node_x + 30 and 
-                        node_y - 30 &lt; mouse_pos[1] &lt; node_y + 30):
+                    if (node_x - 30 < mouse_pos[0] < node_x + 30 and 
+                        node_y - 30 < mouse_pos[1] < node_y + 30):
                         if i == game.current_node + 1:
                             game.next_floor()
             
@@ -288,27 +288,27 @@ while running:
                 for i, card in enumerate(game.player.hand):
                     card_x = start_x + i * card_width
                     card_y = HEIGHT - card_height - 20
-                    if (card_x &lt; mouse_pos[0] &lt; card_x + card_width - 10 and 
-                        card_y &lt; mouse_pos[1] &lt; card_y + card_height):
+                    if (card_x < mouse_pos[0] < card_x + card_width - 10 and 
+                        card_y < mouse_pos[1] < card_y + card_height):
                         game.play_card(card)
                         break
                 
                 # 结束回合按钮
-                if 650 &lt; mouse_pos[0] &lt; 750 and 400 &lt; mouse_pos[1] &lt; 450:
+                if 650 < mouse_pos[0] < 750 and 400 < mouse_pos[1] < 450:
                     game.end_turn()
             
             elif game.state == "reward":
                 # 奖励选择
-                if 300 &lt; mouse_pos[0] &lt; 500 and 350 &lt; mouse_pos[1] &lt; 400:
+                if 300 < mouse_pos[0] < 500 and 350 < mouse_pos[1] < 400:
                     game.state = "map"
                 # 添加卡牌奖励
-                if 200 &lt; mouse_pos[0] &lt; 300 and 250 &lt; mouse_pos[1] &lt; 350:
+                if 200 < mouse_pos[0] < 300 and 250 < mouse_pos[1] < 350:
                     game.player.deck.append(random.choice(card_pool))
                     game.state = "map"
-                if 350 &lt; mouse_pos[0] &lt; 450 and 250 &lt; mouse_pos[1] &lt; 350:
+                if 350 < mouse_pos[0] < 450 and 250 < mouse_pos[1] < 350:
                     game.player.deck.append(random.choice(card_pool))
                     game.state = "map"
-                if 500 &lt; mouse_pos[0] &lt; 600 and 250 &lt; mouse_pos[1] &lt; 350:
+                if 500 < mouse_pos[0] < 600 and 250 < mouse_pos[1] < 350:
                     game.player.deck.append(random.choice(card_pool))
                     game.state = "map"
             
@@ -317,25 +317,25 @@ while running:
                 shop_cards = random.sample(card_pool, 3)
                 prices = [50, 75, 100]
                 for i in range(3):
-                    if 200 + i * 150 &lt; mouse_pos[0] &lt; 300 + i * 150 and 250 &lt; mouse_pos[1] &lt; 350:
-                        if game.player.gold &gt;= prices[i]:
+                    if 200 + i * 150 < mouse_pos[0] < 300 + i * 150 and 250 < mouse_pos[1] < 350:
+                        if game.player.gold >= prices[i]:
                             game.player.gold -= prices[i]
                             game.player.deck.append(shop_cards[i])
-                if 300 &lt; mouse_pos[0] &lt; 500 and 450 &lt; mouse_pos[1] &lt; 500:
+                if 300 < mouse_pos[0] < 500 and 450 < mouse_pos[1] < 500:
                     game.state = "map"
             
             elif game.state == "rest":
                 # 休息选择
-                if 200 &lt; mouse_pos[0] &lt; 350 and 300 &lt; mouse_pos[1] &lt; 350:
+                if 200 < mouse_pos[0] < 350 and 300 < mouse_pos[1] < 350:
                     game.player.hp = min(game.player.hp + 30, game.player.max_hp)
                     game.state = "map"
-                if 450 &lt; mouse_pos[0] &lt; 600 and 300 &lt; mouse_pos[1] &lt; 350:
-                    if len(game.player.deck) &gt; 5:
+                if 450 < mouse_pos[0] < 600 and 300 < mouse_pos[1] < 350:
+                    if len(game.player.deck) > 5:
                         game.player.deck.pop()
                     game.state = "map"
             
             elif game.state == "gameover" or game.state == "victory":
-                if 300 &lt; mouse_pos[0] &lt; 500 and 400 &lt; mouse_pos[1] &lt; 450:
+                if 300 < mouse_pos[0] < 500 and 400 < mouse_pos[1] < 450:
                     game = GameState()
     
     # 绘制
@@ -353,7 +353,7 @@ while running:
                 color = GREEN
             elif i == game.current_node + 1:
                 color = GOLD
-            elif i &lt; game.current_node:
+            elif i < game.current_node:
                 color = DARK_GRAY
             
             pygame.draw.circle(screen, color, (node_x, node_y), 25)
@@ -366,7 +366,7 @@ while running:
         gold_text = font_medium.render(f"金币: {game.player.gold}", True, GOLD)
         screen.blit(gold_text, (50, 540))
         
-        if game.current_node &lt; len(game.map_nodes) - 1:
+        if game.current_node < len(game.map_nodes) - 1:
             instr = font_small.render("点击下一个节点前进", True, WHITE)
             screen.blit(instr, (WIDTH//2 - instr.get_width()//2, 500))
     
@@ -389,7 +389,7 @@ while running:
         intent_text = font_medium.render(f"意图: {game.enemy.intent} 伤害", True, RED)
         screen.blit(intent_text, (enemy_x - intent_text.get_width()//2, enemy_y + 100))
         
-        if game.enemy.block &gt; 0:
+        if game.enemy.block > 0:
             block_text = font_small.render(f"护甲: {game.enemy.block}", True, BLUE)
             screen.blit(block_text, (enemy_x + 80, enemy_y - 20))
         
@@ -405,7 +405,7 @@ while running:
         player_hp_text = font_small.render(f"{game.player.hp}/{game.player.max_hp}", True, WHITE)
         screen.blit(player_hp_text, (player_x - player_hp_text.get_width()//2, player_y + 52))
         
-        if game.player.block &gt; 0:
+        if game.player.block > 0:
             player_block_text = font_small.render(f"护甲: {game.player.block}", True, BLUE)
             screen.blit(player_block_text, (player_x - 50, player_y + 75))
         
@@ -422,7 +422,7 @@ while running:
             card_y = HEIGHT - card_height - 20
             
             # 卡牌背景
-            color = BLUE if card.cost &lt;= game.player.energy else GRAY
+            color = BLUE if card.cost <= game.player.energy else GRAY
             pygame.draw.rect(screen, color, (card_x, card_y, card_width - 10, card_height))
             pygame.draw.rect(screen, WHITE, (card_x, card_y, card_width - 10, card_height), 2)
             
@@ -433,11 +433,11 @@ while running:
             name_text = font_small.render(card.name, True, WHITE)
             screen.blit(name_text, (card_x + 5, card_y + 40))
             
-            if card.damage &gt; 0:
+            if card.damage > 0:
                 dmg_text = font_small.render(f"伤害: {card.damage}", True, RED)
                 screen.blit(dmg_text, (card_x + 5, card_y + 70))
             
-            if card.block &gt; 0:
+            if card.block > 0:
                 blk_text = font_small.render(f"护甲: {card.block}", True, BLUE)
                 screen.blit(blk_text, (card_x + 5, card_y + 90))
         
