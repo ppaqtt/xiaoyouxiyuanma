@@ -9,7 +9,7 @@
 """
 
 import pygame
-import numpy as np
+import math
 import sys
 
 # 初始化pygame
@@ -62,30 +62,34 @@ def note_freq(name):
     }
     return freqs[name]
 
-# 生成音效
-def generate_tone(frequency, duration=0.3, volume=0.5):
-    """生成正弦波音效"""
-    sample_rate = 44100
-    n_samples = int(sample_rate * duration)
-    t = np.linspace(0, duration, n_samples, False)
-    # 正弦波 + 轻微泛音
-    tone = np.sin(2 * np.pi * frequency * t) * 0.6
-    tone += np.sin(2 * np.pi * frequency * 2 * t) * 0.2
-    tone += np.sin(2 * np.pi * frequency * 3 * t) * 0.1
-    # 淡入淡出
-    fade_len = min(int(0.01 * sample_rate), n_samples // 4)
-    tone[:fade_len] *= np.linspace(0, 1, fade_len)
-    tone[-fade_len:] *= np.linspace(1, 0, fade_len)
-    # 调整音量
-    tone = (tone * volume * 32767).astype(np.int16)
-    # 创建pygame声音对象
-    sound = pygame.sndarray.make_sound(tone)
-    return sound
+# 音效缓存（延迟生成）
+_sounds_cache = {}
 
-# 预生成所有音符音效
-sounds = {}
-for name in NOTE_NAMES:
-    sounds[name] = generate_tone(note_freq(name))
+def get_tone(frequency, volume=0.5):
+    """获取或生成音效（延迟加载，避免启动时卡顿）"""
+    key = (frequency, volume)
+    if key not in _sounds_cache:
+        _sounds_cache[key] = _generate_tone(frequency, 0.1, volume)
+    return _sounds_cache[key]
+
+def _generate_tone(frequency, duration=0.1, volume=0.5):
+    """生成正弦波音效"""
+    sample_rate = 22050  # 降低采样率加速生成
+    n_samples = int(sample_rate * duration)
+    buf = bytearray(n_samples * 2)
+    phase = 0.0
+    phase_step = 2 * math.pi * frequency / sample_rate
+    for i in range(n_samples):
+        val = math.sin(phase) * 0.7
+        phase += phase_step
+        # 简单淡出
+        if i > n_samples * 3 // 4:
+            val *= (n_samples - i) / (n_samples // 4)
+        sample = int(val * volume * 32767)
+        sample = max(-32768, min(32767, sample))
+        buf[i * 2] = sample & 0xFF
+        buf[i * 2 + 1] = (sample >> 8) & 0xFF
+    return pygame.mixer.Sound(buffer=bytes(buf))
 
 # 网格状态：grid[row][col] = True/False
 grid = [[False] * COLS for _ in range(ROWS)]
@@ -171,7 +175,7 @@ while running:
                     grid[row][col] = not grid[row][col]
                     # 点击时播放预览音
                     if grid[row][col]:
-                        sounds[NOTE_NAMES[row]].play()
+                        get_tone(note_freq(NOTE_NAMES[row])).play()
 
     # 播放逻辑
     if playing:
@@ -180,7 +184,7 @@ while running:
             # 播放当前列的所有音符
             for row in range(ROWS):
                 if grid[row][play_col]:
-                    sounds[NOTE_NAMES[row]].play()
+                    get_tone(note_freq(NOTE_NAMES[row])).play()
             play_col = (play_col + 1) % COLS
             play_timer = current_time
 

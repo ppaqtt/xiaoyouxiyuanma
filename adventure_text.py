@@ -7,6 +7,7 @@
 import pygame
 import sys
 import random
+import math
 
 # 初始化pygame
 pygame.init()

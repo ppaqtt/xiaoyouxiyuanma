@@ -30,6 +30,7 @@ GRAY = (150, 150, 150)
 DARK_GRAY = (60, 60, 60)
 BG_COLOR = (25, 25, 45)
 PANEL_COLOR = (35, 35, 55)
+YELLOW = (255, 255, 0)
 
 # 物体颜色
 COLORS = [

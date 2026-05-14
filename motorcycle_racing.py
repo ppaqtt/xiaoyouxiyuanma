@@ -84,12 +84,12 @@ class Bike:
         # 车身
         pygame.draw.ellipse(screen, self.color, 
                            (self.x - 35, self.y - 15 + self.wheelie * 10, 
-                            70, 28), border_radius=8)
+                            70, 28))
         
         # 车头
         pygame.draw.rect(screen, self.color, 
                         (self.x + 20, self.y - 10 + self.wheelie * 15, 
-                         20, 15), border_radius=5)
+                         20, 15))
         
         # 轮子
         wheel_y = self.y + 18
@@ -129,12 +129,12 @@ class Obstacle:
     def draw(self):
         if self.type == "car":
             pygame.draw.rect(screen, self.color, 
-                           (self.x - self.width//2, self.y, self.width, self.height), border_radius=8)
+                           (self.x - self.width//2, self.y, self.width, self.height))
             pygame.draw.rect(screen, (100, 150, 200), 
                            (self.x - self.width//2 + 10, self.y + 5, self.width - 20, 15))
         elif self.type == "truck":
             pygame.draw.rect(screen, self.color, 
-                           (self.x - self.width//2, self.y, self.width, self.height), border_radius=5)
+                           (self.x - self.width//2, self.y, self.width, self.height))
             pygame.draw.rect(screen, (200, 100, 50), 
                            (self.x - self.width//2, self.y - 20, 40, 20))
         else:
@@ -262,7 +262,7 @@ class TurboBikeGame:
         self.player.draw()
         
         # HUD
-        pygame.draw.rect(screen, (0, 0, 0, 150), (10, 10, 200, 90), border_radius=10)
+        pygame.draw.rect(screen, (0, 0, 0, 150), (10, 10, 200, 90))
         
         score_text = self.font_medium.render(f"分数: {self.score}", True, YELLOW)
         speed_text = self.font_small.render(f"速度: {int(self.player.speed*30)} km/h", True, WHITE)
