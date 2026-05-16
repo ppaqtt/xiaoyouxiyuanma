@@ -250,16 +250,26 @@ games_data = {
         {"name": "田径运动会", "file": "athletics.py", "desc": "跑步跳跃"},
         {"name": "游泳比赛", "file": "swimming.py", "desc": "多种泳姿"},
         {"name": "自行车竞赛", "file": "cycling.py", "desc": "赛道骑行"},
+        {"name": "滑雪大冒险", "file": "skiing_game.py", "desc": "躲避障碍"},
+        {"name": "街头滑板", "file": "skateboard_game.py", "desc": "技巧动作"},
     ],
     "🏋️ 体育竞技": [
         {"name": "乒乓球", "file": "table_tennis.py", "desc": "真实模拟"},
         {"name": "网球", "file": "tennis.py", "desc": "网球对战"},
         {"name": "羽毛球", "file": "badminton.py", "desc": "羽毛球竞技"},
+        {"name": "街头篮球", "file": "basketball_game.py", "desc": "投篮技巧"},
+        {"name": "热血足球", "file": "soccer_game.py", "desc": "足球对战"},
+        {"name": "高尔夫精英", "file": "golf_game.py", "desc": "高尔夫球"},
     ],
     "🎭 角色扮演": [
         {"name": "生命模拟器", "file": "life_simulator.py", "desc": "从出生到死亡"},
         {"name": "宠物养成", "file": "pet_simulator.py", "desc": "喂食/玩耍/洗澡"},
         {"name": "太空殖民地", "file": "space_colony.py", "desc": "资源/建筑管理"},
+        {"name": "海盗冒险", "file": "pirate_adventure.py", "desc": "海上探险"},
+    ],
+    "🥊 格斗竞技": [
+        {"name": "街头格斗", "file": "street_fighter.py", "desc": "2D对战"},
+        {"name": "拳击冠军", "file": "boxing_game.py", "desc": "拳击比赛"},
     ],
 }
 
