@@ -5,52 +5,24 @@ import subprocess
 
 pygame.init()
 
-WIDTH, HEIGHT = 1200, 800
+WIDTH, HEIGHT = 1200, 750
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("🎮 Python 小游戏合集 - 游戏启动器 v2.0")
-clock = pygame.time.Clock()
+pygame.display.set_caption("Python 小游戏合集 - 游戏启动器 v2.0")
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-GRAY = (200, 200, 200)
-DARK_GRAY = (100, 100, 100)
-GREEN = (0, 200, 100)
-BLUE = (0, 100, 200)
-RED = (200, 50, 50)
-YELLOW = (255, 200, 0)
-PURPLE = (150, 50, 200)
-ORANGE = (255, 150, 0)
-CYAN = (0, 200, 200)
-BROWN = (139, 69, 19)
-PINK = (255, 100, 150)
-TEAL = (0, 180, 180)
+YELLOW = (255, 200, 50)
+RED = (255, 100, 100)
+GREEN = (100, 255, 100)
+BLUE = (100, 150, 255)
+PURPLE = (200, 100, 255)
+GRAY = (150, 150, 150)
+DARK_GRAY = (40, 40, 60)
 
-font_large = pygame.font.Font(None, 48)
-font_medium = pygame.font.Font(None, 32)
+font_large = pygame.font.Font(None, 40)
+font_medium = pygame.font.Font(None, 28)
 font_small = pygame.font.Font(None, 24)
 font_tiny = pygame.font.Font(None, 20)
-
-categories = [
-    {"name": "🏠 全部游戏", "color": PURPLE},
-    {"name": "📝 经典文字", "color": GRAY},
-    {"name": "🕹️ 街机复刻", "color": BLUE},
-    {"name": "🏰 策略塔防", "color": GREEN},
-    {"name": "⚔️ RPG冒险", "color": ORANGE},
-    {"name": "🏪 模拟经营", "color": YELLOW},
-    {"name": "🧩 益智解谜", "color": RED},
-    {"name": "🎵 音乐创意", "color": PURPLE},
-    {"name": "🎯 休闲街机", "color": CYAN},
-    {"name": "📚 文字学习", "color": GRAY},
-    {"name": "♠️ 卡牌桌游", "color": GREEN},
-    {"name": "🎉 多人派对", "color": RED},
-    {"name": "🔫 生存射击", "color": ORANGE},
-    {"name": "🤖 放置自动", "color": YELLOW},
-    {"name": "🚗 赛车驾驶", "color": PURPLE},
-    {"name": "🎬 视觉叙事", "color": BLUE},
-    {"name": "🔬 科学教育", "color": TEAL},
-    {"name": "🏃 竞速运动", "color": PINK},
-    {"name": "🏋️ 体育竞技", "color": BLUE},
-]
 
 games_data = {
     "📝 经典文字": [
@@ -123,6 +95,7 @@ games_data = {
         {"name": "医院模拟器", "file": "hospital_sim.py", "desc": "医院经营"},
         {"name": "学校模拟器", "file": "school_sim.py", "desc": "学校管理"},
         {"name": "动物园模拟器", "file": "zoo_sim.py", "desc": "动物园管理"},
+        {"name": "简易星露谷", "file": "simple_stardew_valley.py", "desc": "像素农场"},
     ],
     "🧩 益智解谜": [
         {"name": "记忆配对", "file": "memory_game.py", "desc": "翻牌配对"},
@@ -144,9 +117,10 @@ games_data = {
         {"name": "数织", "file": "nonogram.py", "desc": "逻辑填空"},
         {"name": "成语接龙", "file": "idiom_game.py", "desc": "成语接龙"},
         {"name": "七巧板", "file": "tangram.py", "desc": "拼图游戏"},
+        {"name": "数字油画", "file": "paint_by_number.py", "desc": "按数字填色"},
     ],
     "🎵 音乐创意": [
-        {"name": "音乐节奏大师", "file": "rhythm_master.py", "desc": "节奏游戏"},
+        {"name": "音乐节奏大师", "file": "rhythm_master.py", "desc": "方块消除"},
         {"name": "音乐生成器", "file": "music_generator.py", "desc": "创作音乐"},
         {"name": "像素艺术", "file": "pixel_art.py", "desc": "像素绘画"},
         {"name": "像素动画师", "file": "pixel_animator.py", "desc": "做动画"},
@@ -155,6 +129,8 @@ games_data = {
         {"name": "物理弹珠球", "file": "physics_balls.py", "desc": "弹球物理"},
         {"name": "分形艺术", "file": "fractal_art.py", "desc": "分形图案"},
         {"name": "音乐可视化", "file": "music_visualizer.py", "desc": "音频可视化"},
+        {"name": "吉他英雄", "file": "guitar_hero.py", "desc": "节奏按键"},
+        {"name": "像素艺术编辑器", "file": "pixel_art_editor.py", "desc": "像素画创作"},
     ],
     "🎯 休闲街机": [
         {"name": "水果忍者", "file": "fruit_ninja.py", "desc": "切水果"},
@@ -203,6 +179,7 @@ games_data = {
         {"name": "多人知识竞赛", "file": "multiplayer_quiz.py", "desc": "多人答题"},
         {"name": "多人记忆挑战", "file": "multiplayer_memory.py", "desc": "记忆对战"},
         {"name": "多人找不同", "file": "multiplayer_spot_diff.py", "desc": "找茬对战"},
+        {"name": "多人炸弹人", "file": "multiplayer_bomberman.py", "desc": "2-4人对战"},
     ],
     "🔫 生存射击": [
         {"name": "太空射击", "file": "space_shooter.py", "desc": "射击游戏"},
@@ -214,6 +191,7 @@ games_data = {
         {"name": "密室逃脱", "file": "escape_room.py", "desc": "找线索"},
         {"name": "狙击精英", "file": "sniper_game.py", "desc": "狙击游戏"},
         {"name": "双摇杆射击", "file": "twin_stick_shooter.py", "desc": "射击"},
+        {"name": "荒岛求生", "file": "island_survival.py", "desc": "资源收集"},
     ],
     "🤖 放置自动": [
         {"name": "自动点击器", "file": "auto_clicker.py", "desc": "自动点击"},
@@ -224,6 +202,11 @@ games_data = {
         {"name": "放置进化", "file": "idle_evolution.py", "desc": "生物进化"},
         {"name": "自动采矿", "file": "idle_mining.py", "desc": "资源收集"},
         {"name": "放置塔防", "file": "idle_tower_defense.py", "desc": "挂机防御"},
+        {"name": "农场大亨", "file": "idle_farm.py", "desc": "多作物种植"},
+        {"name": "生产线帝国", "file": "idle_factory.py", "desc": "工厂管理"},
+        {"name": "梦想城市", "file": "idle_city.py", "desc": "城市规划"},
+        {"name": "挖矿大亨", "file": "idle_mining.py", "desc": "矿石采集"},
+        {"name": "英雄传奇", "file": "idle_heroes.py", "desc": "英雄培养"},
     ],
     "🚗 赛车驾驶": [
         {"name": "赛车", "file": "racing.py", "desc": "赛车"},
@@ -232,6 +215,8 @@ games_data = {
         {"name": "2D赛车竞速", "file": "racing_2d.py", "desc": "竞速赛车"},
         {"name": "卡丁车赛道", "file": "kart_racing.py", "desc": "卡丁车"},
         {"name": "摩托车狂飙", "file": "motorcycle_racing.py", "desc": "摩托竞速"},
+        {"name": "方程式赛车", "file": "formula_racing.py", "desc": "氮气加速"},
+        {"name": "漂移大师", "file": "drift_racing.py", "desc": "甩尾漂移"},
     ],
     "🎬 视觉叙事": [
         {"name": "视觉小说", "file": "visual_novel.py", "desc": "剧情"},
@@ -242,6 +227,9 @@ games_data = {
         {"name": "文字冒险RPG", "file": "text_adventure.py", "desc": "失落王国"},
         {"name": "穿越时空", "file": "time_travel.py", "desc": "时间旅行"},
         {"name": "解谜小说", "file": "mystery_novel.py", "desc": "庄园推理"},
+        {"name": "命运抉择", "file": "text_adventure_story.py", "desc": "分支冒险"},
+        {"name": "神秘逃脱", "file": "escape_mystery.py", "desc": "多房间谜题"},
+        {"name": "侦探事务所", "file": "detective_story.py", "desc": "线索推理"},
     ],
     "🔬 科学教育": [
         {"name": "元素周期表", "file": "element_game.py", "desc": "化学元素"},
@@ -251,6 +239,12 @@ games_data = {
         {"name": "数学实验室", "file": "geometry_lab.py", "desc": "几何图形"},
         {"name": "生物进化模拟", "file": "evolution_sim.py", "desc": "遗传算法"},
         {"name": "地理知识问答", "file": "geography_quiz.py", "desc": "世界地理"},
+        {"name": "化学元素猜猜乐", "file": "chemistry_elements.py", "desc": "元素分类"},
+        {"name": "太空探索", "file": "space_astronomy.py", "desc": "行星收集"},
+        {"name": "环球冒险知识问答", "file": "geography_trivia.py", "desc": "大洲主题"},
+        {"name": "数学大冒险", "file": "math_puzzle.py", "desc": "RPG数学"},
+        {"name": "细胞工厂", "file": "biology_cells.py", "desc": "模拟经营"},
+        {"name": "时间旅行大冒险", "file": "history_trivia.py", "desc": "时代探索"},
     ],
     "🏃 竞速运动": [
         {"name": "田径运动会", "file": "athletics.py", "desc": "跑步跳跃"},
@@ -261,6 +255,11 @@ games_data = {
         {"name": "乒乓球", "file": "table_tennis.py", "desc": "真实模拟"},
         {"name": "网球", "file": "tennis.py", "desc": "网球对战"},
         {"name": "羽毛球", "file": "badminton.py", "desc": "羽毛球竞技"},
+    ],
+    "🎭 角色扮演": [
+        {"name": "生命模拟器", "file": "life_simulator.py", "desc": "从出生到死亡"},
+        {"name": "宠物养成", "file": "pet_simulator.py", "desc": "喂食/玩耍/洗澡"},
+        {"name": "太空殖民地", "file": "space_colony.py", "desc": "资源/建筑管理"},
     ],
 }
 
@@ -280,22 +279,22 @@ def draw_gradient():
         r = int(20 + y / HEIGHT * 40)
         g = int(20 + y / HEIGHT * 40)
         b = int(40 + y / HEIGHT * 60)
-        pygame.draw.line(screen, (r, g, b), (0, y), (WIDTH, y))
+        pygame.draw.line(screen, (r, g, b), (0, y), (0, y))
 
 def draw_categories():
     category_y = 30
     cols = 8
-    for i, category in enumerate(categories):
+    for i, category in enumerate(games_data.keys()):
         x = 10 + (i % cols) * 148
         y = category_y + (i // cols) * 50
         
         if i == current_category:
-            pygame.draw.rect(screen, category["color"], (x, y, 143, 40), border_radius=5)
+            pygame.draw.rect(screen, (100, 100, 150), (x, y, 143, 40), border_radius=5)
             pygame.draw.rect(screen, WHITE, (x, y, 143, 40), 3, border_radius=5)
         else:
             pygame.draw.rect(screen, DARK_GRAY, (x, y, 143, 40), border_radius=5)
         
-        text = font_small.render(category["name"], True, WHITE)
+        text = font_small.render(category, True, WHITE)
         text_rect = text.get_rect(center=(x + 71, y + 20))
         screen.blit(text, text_rect)
 
@@ -304,7 +303,7 @@ def draw_games():
     if current_category == 0:
         games_to_show = all_games
     else:
-        category_name = categories[current_category]["name"]
+        category_name = list(games_data.keys())[current_category]
         if category_name in games_data:
             games_to_show = games_data[category_name]
     
@@ -350,10 +349,16 @@ def draw_search():
     screen.blit(search_text, (30, HEIGHT - 55))
 
 def draw_scrollbar():
-    games_to_show = all_games if current_category == 0 else games_data.get(categories[current_category]["name"], [])
-    total_games = len(games_to_show)
+    if current_category == 0:
+        games_to_show = all_games
+    else:
+        category_name = list(games_data.keys())[current_category]
+        games_to_show = games_data.get(category_name, [])
+    
     if search_query:
-        total_games = len([g for g in games_to_show if search_query.lower() in g["name"].lower()])
+        games_to_show = [g for g in games_to_show if search_query.lower() in g["name"].lower()]
+    
+    total_games = len(games_to_show)
     
     if total_games > 12:
         scroll_height = HEIGHT - 190
@@ -361,7 +366,7 @@ def draw_scrollbar():
         thumb_y = 150 + (scroll_offset / max(1, total_games - 12)) * scroll_height
         
         pygame.draw.rect(screen, DARK_GRAY, (WIDTH - 25, 150, 15, scroll_height))
-        pygame.draw.rect(screen, (150, 150, 180), (WIDTH - 25, thumb_y, 15, thumb_height))
+        pygame.draw.rect(screen, (150, 150, 180), (WIDTH - 25, int(thumb_y), 15, int(thumb_height)))
 
 def launch_game(game):
     file_path = os.path.join(os.getcwd(), game["file"])
@@ -395,7 +400,7 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mx, my = event.pos
             
-            for i, category in enumerate(categories):
+            for i, category in enumerate(games_data.keys()):
                 x = 10 + (i % 8) * 148
                 y = 30 + (i // 8) * 50
                 if x <= mx <= x + 143 and y <= my <= y + 40:
@@ -403,7 +408,12 @@ while running:
                     scroll_offset = 0
                     selected_game = None
             
-            games_to_show = all_games if current_category == 0 else games_data.get(categories[current_category]["name"], [])
+            if current_category == 0:
+                games_to_show = all_games
+            else:
+                category_name = list(games_data.keys())[current_category]
+                games_to_show = games_data.get(category_name, [])
+            
             if search_query:
                 games_to_show = [g for g in games_to_show if search_query.lower() in g["name"].lower()]
             
@@ -430,7 +440,7 @@ while running:
                 current_category = max(0, current_category - 1)
                 scroll_offset = 0
             elif event.key == pygame.K_RIGHT:
-                current_category = min(len(categories) - 1, current_category + 1)
+                current_category = min(len(games_data.keys()) - 1, current_category + 1)
                 scroll_offset = 0
             elif event.key == pygame.K_BACKSPACE:
                 search_query = search_query[:-1]
