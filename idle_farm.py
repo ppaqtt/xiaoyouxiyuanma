@@ -1,84 +1,129 @@
 import pygame
+import random
 import sys
 
 pygame.init()
 
 WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("放置农场")
+pygame.display.set_caption("农场大亨")
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 GREEN = (50, 200, 50)
 BROWN = (139, 90, 43)
 YELLOW = (255, 200, 50)
+RED = (200, 50, 50)
+BLUE = (50, 100, 255)
+ORANGE = (255, 150, 50)
 
-class IdleFarm:
+crops = [
+    {"name": "小麦", "cost": 10, "time": 3, "income": 15, "color": YELLOW},
+    {"name": "玉米", "cost": 25, "time": 5, "income": 40, "color": YELLOW},
+    {"name": "胡萝卜", "cost": 15, "time": 4, "income": 25, "color": ORANGE},
+    {"name": "西红柿", "cost": 30, "time": 7, "income": 55, "color": RED},
+    {"name": "向日葵", "cost": 50, "time": 10, "income": 100, "color": YELLOW},
+]
+
+class FarmGame:
     def __init__(self):
         self.money = 100
-        self.farms = 1
-        self.farmers = 0
-        self.crops = 0
+        self.farm_spots = [{"crop": None, "time_left": 0} for _ in range(9)]
+        self.hired_workers = 0
+        self.worker_cost = 50
         self.font = pygame.font.Font(None, 32)
-        self.clock = pygame.time.Clock()
-        self.last_update = pygame.time.get_ticks()
+        self.large_font = pygame.font.Font(None, 48)
+        self.selected_shop = 0
 
     def update(self):
-        now = pygame.time.get_ticks()
-        if now - self.last_update >= 1000:
-            self.crops += self.farms * (1 + self.farmers * 0.5)
-            self.last_update = now
+        for spot in self.farm_spots:
+            if spot["time_left"] > 0:
+                spot["time_left"] -= 0.016
+            if spot["time_left"] <= 0 and spot["crop"] is not None:
+                self.money += spot["crop"]["income"]
+                spot["crop"] = None
 
     def draw(self):
         screen.fill(GREEN)
         
-        pygame.draw.rect(screen, BROWN, (100, 400, 600, 150))
-        
-        for i in range(self.farms):
-            x = 200 + i * 100
-            pygame.draw.rect(screen, YELLOW, (x, 450, 60, 40))
-        
-        title_text = self.font.render("放置农场", True, BLACK)
-        screen.blit(title_text, (350, 20))
+        pygame.draw.rect(screen, (200, 240, 200), (0, 0, 800, 80))
+        title_text = self.large_font.render("农场大亨", True, BLACK)
+        screen.blit(title_text, (300, 20))
         
         money_text = self.font.render(f"金币: {int(self.money)}", True, BLACK)
-        screen.blit(money_text, (50, 70))
+        screen.blit(money_text, (30, 90))
         
-        crops_text = self.font.render(f"作物: {int(self.crops)}", True, BLACK)
-        screen.blit(crops_text, (50, 100))
+        worker_text = self.font.render(f"工人: {self.hired_workers}", True, BLACK)
+        screen.blit(worker_text, (250, 90))
         
-        farms_text = self.font.render(f"农场: {self.farms}", True, BLACK)
-        screen.blit(farms_text, (50, 130))
+        for i in range(3):
+            for j in range(3):
+                x = 100 + j * 200
+                y = 180 + i * 110
+                spot = self.farm_spots[i*3 + j]
+                color = BROWN if spot["crop"] is None else spot["crop"]["color"]
+                pygame.draw.rect(screen, color, (x, y, 180, 90), border_radius=5)
+                pygame.draw.rect(screen, BLACK, (x, y, 180, 90), 2, border_radius=5)
+                
+                if spot["crop"]:
+                    name = self.font.render(spot["crop"]["name"], True, BLACK)
+                    screen.blit(name, (x+20, y+25))
+                    progress = max(0, 100 - spot["time_left"]/spot["crop"]["time"] * 100)
+                    pygame.draw.rect(screen, (200, 200, 200), (x+20, y+55, 140, 20))
+                    pygame.draw.rect(screen, GREEN, (x+20, y+55, 140 * progress/100, 20))
+                else:
+                    hint = self.font.render("点击种植", True, (100, 100, 100))
+                    screen.blit(hint, (x+35, y+35))
         
-        farmers_text = self.font.render(f"农夫: {self.farmers}", True, BLACK)
-        screen.blit(farmers_text, (50, 160))
+        pygame.draw.rect(screen, (240, 240, 240), (550, 150, 230, 420), border_radius=10)
+        pygame.draw.rect(screen, BLACK, (550, 150, 230, 420), 2, border_radius=10)
         
-        buy_farm_text = self.font.render(f"购买农场 (100金币)", True, BLACK)
-        pygame.draw.rect(screen, (100, 150, 255), (50, 200, 200, 40))
-        screen.blit(buy_farm_text, (60, 210))
+        shop_title = self.font.render("商店", True, BLACK)
+        screen.blit(shop_title, (620, 165))
         
-        buy_farmer_text = self.font.render(f"雇佣农夫 (50金币)", True, BLACK)
-        pygame.draw.rect(screen, (100, 150, 255), (50, 260, 200, 40))
-        screen.blit(buy_farmer_text, (60, 270))
+        for i, crop in enumerate(crops):
+            button_y = 200 + i * 50
+            pygame.draw.rect(screen, (200, 220, 255), (560, button_y, 210, 45), border_radius=3)
+            pygame.draw.rect(screen, BLACK, (560, button_y, 210, 45), 2, border_radius=3)
+            crop_name = self.font.render(crop["name"], True, BLACK)
+            screen.blit(crop_name, (570, button_y+5))
+            crop_info = self.font.render(f"¥{crop['cost']} → ¥{crop['income']}", True, (100, 100, 100))
+            screen.blit(crop_info, (570, button_y+22))
         
-        sell_crops_text = self.font.render(f"出售作物 (1金币/个)", True, BLACK)
-        pygame.draw.rect(screen, (255, 150, 100), (50, 320, 200, 40))
-        screen.blit(sell_crops_text, (60, 330))
+        hire_text = self.font.render(f"雇佣工人 ¥{self.worker_cost}", True, BLACK)
+        pygame.draw.rect(screen, (200, 255, 200), (560, 450, 210, 45), border_radius=3)
+        pygame.draw.rect(screen, BLACK, (560, 450, 210, 45), 2, border_radius=3)
+        screen.blit(hire_text, (570, 458))
+        
+        hint_text = self.font.render("点击商店选择作物，再点击农田种植", True, BLUE)
+        screen.blit(hint_text, (WIDTH//2 - hint_text.get_width()//2, 550))
 
     def handle_click(self, pos):
-        if 50 <= pos[0] <= 250 and 200 <= pos[1] <= 240:
-            if self.money >= 100:
-                self.money -= 100
-                self.farms += 1
-        elif 50 <= pos[0] <= 250 and 260 <= pos[1] <= 300:
-            if self.money >= 50:
-                self.money -= 50
-                self.farmers += 1
-        elif 50 <= pos[0] <= 250 and 320 <= pos[1] <= 360:
-            self.money += int(self.crops)
-            self.crops = 0
+        for i in range(3):
+            for j in range(3):
+                x = 100 + j * 200
+                y = 180 + i * 110
+                if x <= pos[0] <= x+180 and y <= pos[1] <= y+90:
+                    idx = i*3 + j
+                    if self.farm_spots[idx]["crop"] is None:
+                        crop = crops[self.selected_shop]
+                        if self.money >= crop["cost"]:
+                            self.money -= crop["cost"]
+                            self.farm_spots[idx]["crop"] = crop
+                            self.farm_spots[idx]["time_left"] = crop["time"]
+        
+        for i, crop in enumerate(crops):
+            if 560 <= pos[0] <= 770 and 200 + i*50 <= pos[1] <= 245 + i*50:
+                self.selected_shop = i
+        
+        if 560 <= pos[0] <= 770 and 450 <= pos[1] <= 495:
+            if self.money >= self.worker_cost:
+                self.money -= self.worker_cost
+                self.hired_workers += 1
+                self.worker_cost *= 1.5
 
-game = IdleFarm()
+game = FarmGame()
+clock = pygame.time.Clock()
 running = True
 
 while running:
@@ -91,6 +136,6 @@ while running:
     game.update()
     game.draw()
     pygame.display.flip()
-    game.clock.tick(60)
+    clock.tick(60)
 
 pygame.quit()
