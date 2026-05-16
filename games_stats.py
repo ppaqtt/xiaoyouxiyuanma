@@ -16,6 +16,9 @@ games_data = {
         ("文字德州扑克", "text_poker.py", "德州扑克"),
         ("文字21点", "text_blackjack.py", "21点纸牌"),
         ("聊天机器人", "chat_bot.py", "AI聊天"),
+        ("数字谜题", "math_puzzle.py", "数学计算"),
+        ("24点", "twenty_four.py", "算24点"),
+        ("字母重组", "anagram.py", "拼单词"),
     ],
     "🕹️ 街机复刻": [
         ("贪吃蛇", "snake_game.py", "经典街机"),
@@ -75,6 +78,8 @@ games_data = {
         ("医院模拟器", "hospital_sim.py", "医院经营"),
         ("学校模拟器", "school_sim.py", "学校管理"),
         ("动物园模拟器", "zoo_sim.py", "动物园管理"),
+        ("简易星露谷", "simple_stardew_valley.py", "农场模拟"),
+        ("太空殖民地", "space_colony.py", "太空殖民"),
     ],
     "🧩 益智解谜": [
         ("记忆配对", "memory_game.py", "翻牌配对"),
@@ -107,6 +112,7 @@ games_data = {
         ("物理弹珠球", "physics_balls.py", "弹球物理"),
         ("分形艺术", "fractal_art.py", "分形图案"),
         ("音乐可视化", "music_visualizer.py", "音频可视化"),
+        ("吉他英雄", "guitar_hero.py", "音乐节奏"),
     ],
     "🎯 休闲街机": [
         ("水果忍者", "fruit_ninja.py", "切水果"),
@@ -141,6 +147,9 @@ games_data = {
         ("骰子游戏", "dice_games.py", "骰子"),
         ("多米诺骨牌", "dominoes.py", "多米诺"),
         ("沙狐球", "shuffleboard.py", "沙狐球"),
+        ("斗地主", "landlord.py", "经典棋牌"),
+        ("桥牌", "bridge.py", "经典卡牌"),
+        ("梭哈", "stud_poker.py", "扑克游戏"),
     ],
     "🎉 多人派对": [
         ("多人派对对战", "multiplayer_party.py", "多人同屏"),
@@ -149,6 +158,10 @@ games_data = {
         ("谁是卧底", "spy_game.py", "卧底猜测"),
         ("疯狂猜词", "crazy_word_game.py", "猜词对战"),
         ("你画我猜", "draw_and_guess.py", "画画猜词"),
+        ("多人炸弹人", "multiplayer_bomberman.py", "多人对战"),
+        ("多人记忆", "multiplayer_memory.py", "记忆对战"),
+        ("多人找不同", "multiplayer_spot_diff.py", "找不同"),
+        ("多人问答", "multiplayer_quiz.py", "问答比赛"),
     ],
     "🔫 生存射击": [
         ("太空射击", "space_shooter.py", "射击游戏"),
@@ -160,6 +173,7 @@ games_data = {
         ("密室逃脱", "escape_room.py", "找线索"),
         ("狙击精英", "sniper_game.py", "狙击游戏"),
         ("双摇杆射击", "twin_stick_shooter.py", "射击游戏"),
+        ("荒岛求生", "island_survival.py", "生存游戏"),
     ],
     "🤖 放置自动": [
         ("自动点击器", "auto_clicker.py", "自动点击"),
@@ -167,6 +181,11 @@ games_data = {
         ("点击英雄", "clicker_hero.py", "点击游戏"),
         ("农场自动种植", "farm_auto.py", "农场经营"),
         ("工厂生产线", "factory_sim.py", "工厂模拟"),
+        ("放置农场", "idle_farm.py", "农场放置"),
+        ("放置工厂", "idle_factory.py", "工厂放置"),
+        ("放置城市", "idle_city.py", "城市放置"),
+        ("放置挖矿", "idle_mining.py", "挖矿放置"),
+        ("放置英雄", "idle_heroes.py", "英雄放置"),
     ],
     "🚗 赛车驾驶": [
         ("赛车", "racing.py", "赛车"),
@@ -175,6 +194,10 @@ games_data = {
         ("2D赛车竞速", "racing_2d.py", "竞速赛车"),
         ("卡丁车赛道", "kart_racing.py", "卡丁车"),
         ("摩托车狂飙", "motorcycle_racing.py", "摩托竞速"),
+        ("3D拉力赛车", "rally_racing_3d.py", "3D竞速"),
+        ("卡丁车对战", "kart_battle.py", "卡丁车对战"),
+        ("方程式赛车", "formula_racing.py", "F1赛车"),
+        ("漂移赛车", "drift_racing.py", "漂移竞速"),
     ],
     "🎬 视觉叙事": [
         ("视觉小说", "visual_novel.py", "剧情"),
@@ -182,12 +205,23 @@ games_data = {
         ("互动故事冒险", "interactive_story.py", "互动剧情"),
         ("侦探推理小说", "detective_game.py", "侦探推理"),
         ("选择分支剧情", "branching_story.py", "剧情选择"),
+        ("文字冒险故事", "text_adventure_story.py", "文字冒险"),
+        ("密室逃脱", "escape_mystery.py", "逃脱游戏"),
+        ("侦探推理", "detective_story.py", "推理故事"),
+        ("神秘小说", "mystery_novel.py", "悬疑小说"),
+        ("文字冒险", "adventure_text.py", "冒险故事"),
     ],
     "🔬 科学教育": [
         ("元素周期表", "element_game.py", "化学元素"),
         ("物理实验室", "physics_lab.py", "物理模拟"),
         ("化学实验", "chemistry_lab.py", "实验模拟"),
         ("编程入门", "programming_tutor.py", "学编程"),
+        ("化学元素猜猜乐", "chemistry_elements.py", "化学学习"),
+        ("太空探索", "space_astronomy.py", "天文知识"),
+        ("地理知识问答", "geography_trivia.py", "地理问答"),
+        ("细胞探索", "biology_cells.py", "生物知识"),
+        ("历史知识问答", "history_trivia.py", "历史问答"),
+        ("生命科学", "life_science.py", "生命科学"),
     ],
 }
 
