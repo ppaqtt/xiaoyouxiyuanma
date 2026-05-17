@@ -5,11 +5,32 @@
 """
 
 import pygame
+import os
 import sys
 import random
 
 # 初始化pygame
 pygame.init()
+
+
+
+# 尝试使用中文字体
+def get_chinese_font(size):
+    """获取支持中文的字体"""
+    font_names = [
+        "C:/Windows/Fonts/simsun.ttc",  # 宋体
+        "C:/Windows/Fonts/msyh.ttc",    # 微软雅黑
+        "C:/Windows/Fonts/simhei.ttf",  # 黑体
+        "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",  # Linux
+        "/System/Library/Fonts/PingFang.ttc",  # macOS
+    ]
+    for font_name in font_names:
+        if os.path.exists(font_name):
+            try:
+                return pygame.font.Font(font_name, size)
+            except:
+                continue
+    return get_chinese_font(size)
 
 # 游戏常量
 SCREEN_WIDTH = 1000

@@ -4,11 +4,32 @@
 """
 
 import pygame
+import os
 import random
 import sys
 import math
 
 pygame.init()
+
+
+
+# 尝试使用中文字体
+def get_chinese_font(size):
+    """获取支持中文的字体"""
+    font_names = [
+        "C:/Windows/Fonts/simsun.ttc",  # 宋体
+        "C:/Windows/Fonts/msyh.ttc",    # 微软雅黑
+        "C:/Windows/Fonts/simhei.ttf",  # 黑体
+        "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",  # Linux
+        "/System/Library/Fonts/PingFang.ttc",  # macOS
+    ]
+    for font_name in font_names:
+        if os.path.exists(font_name):
+            try:
+                return pygame.font.Font(font_name, size)
+            except:
+                continue
+    return get_chinese_font(size)
 
 WIDTH, HEIGHT = 700, 750
 BOARD_SIZE = 15
@@ -41,9 +62,9 @@ class Game:
         self.mode = "pvp"
         self.last_move = None
         self.hover_pos = None
-        self.font = pygame.font.Font(None, 36)
-        self.font_large = pygame.font.Font(None, 48)
-        self.font_small = pygame.font.Font(None, 28)
+        self.font = get_chinese_font(36)
+        self.font_large = get_chinese_font(48)
+        self.font_small = get_chinese_font(28)
         self.buttons = [
             {"text": "双人对战", "rect": pygame.Rect(100, 700, 120, 40), "action": "pvp"},
             {"text": "人机对战", "rect": pygame.Rect(250, 700, 120, 40), "action": "ai"},

@@ -1,4 +1,5 @@
 import pygame
+import os
 import sys
 import math
 import random
@@ -6,6 +7,26 @@ import struct
 
 # 初始化pygame
 pygame.init()
+
+
+
+# 尝试使用中文字体
+def get_chinese_font(size):
+    """获取支持中文的字体"""
+    font_names = [
+        "C:/Windows/Fonts/simsun.ttc",  # 宋体
+        "C:/Windows/Fonts/msyh.ttc",    # 微软雅黑
+        "C:/Windows/Fonts/simhei.ttf",  # 黑体
+        "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",  # Linux
+        "/System/Library/Fonts/PingFang.ttc",  # macOS
+    ]
+    for font_name in font_names:
+        if os.path.exists(font_name):
+            try:
+                return pygame.font.Font(font_name, size)
+            except:
+                continue
+    return get_chinese_font(size)
 
 # 游戏配置
 SCREEN_WIDTH = 800
@@ -183,7 +204,7 @@ class PowerBar:
             color = RED
         pygame.draw.rect(surface, color, (self.x, self.y, fill_width, self.height))
         # 标签
-        font = pygame.font.Font(None, 20)
+        font = get_chinese_font(20)
         text = font.render(f"力度: {int(self.power)}%", True, BLACK)
         surface.blit(text, (self.x, self.y + 20))
     
@@ -224,13 +245,13 @@ class Game:
         screen.fill(GREEN)
         
         # 标题
-        font = pygame.font.Font(None, 64)
+        font = get_chinese_font(64)
         text = font.render("足球点球大战", True, WHITE)
         text_rect = text.get_rect(center=(SCREEN_WIDTH // 2, 150))
         screen.blit(text, text_rect)
         
         # 副标题
-        font = pygame.font.Font(None, 32)
+        font = get_chinese_font(32)
         text = font.render("鼠标瞄准 - 按住蓄力 - 松开发射", True, WHITE)
         text_rect = text.get_rect(center=(SCREEN_WIDTH // 2, 250))
         screen.blit(text, text_rect)
@@ -238,13 +259,13 @@ class Game:
         # 开始按钮
         button_rect = pygame.Rect(SCREEN_WIDTH // 2 - 100, 350, 200, 50)
         pygame.draw.rect(screen, BLUE, button_rect)
-        font = pygame.font.Font(None, 36)
+        font = get_chinese_font(36)
         text = font.render("开始游戏", True, WHITE)
         text_rect = text.get_rect(center=button_rect.center)
         screen.blit(text, text_rect)
         
         # 操作说明
-        font = pygame.font.Font(None, 24)
+        font = get_chinese_font(24)
         text = font.render("操作说明:", True, WHITE)
         screen.blit(text, (SCREEN_WIDTH // 2 - 80, 450))
         text = font.render("1. 移动鼠标瞄准球门", True, WHITE)
@@ -259,12 +280,12 @@ class Game:
     def draw_game_over(self):
         screen.fill(GREEN)
         
-        font = pygame.font.Font(None, 64)
+        font = get_chinese_font(64)
         text = font.render("游戏结束", True, WHITE)
         text_rect = text.get_rect(center=(SCREEN_WIDTH // 2, 150))
         screen.blit(text, text_rect)
         
-        font = pygame.font.Font(None, 32)
+        font = get_chinese_font(32)
         text = font.render(f"最终得分: {self.score}", True, WHITE)
         text_rect = text.get_rect(center=(SCREEN_WIDTH // 2, 250))
         screen.blit(text, text_rect)
@@ -283,7 +304,7 @@ class Game:
         
         button_rect = pygame.Rect(SCREEN_WIDTH // 2 - 100, 480, 200, 50)
         pygame.draw.rect(screen, BLUE, button_rect)
-        font = pygame.font.Font(None, 36)
+        font = get_chinese_font(36)
         text = font.render("重新开始", True, WHITE)
         text_rect = text.get_rect(center=button_rect.center)
         screen.blit(text, text_rect)
@@ -321,7 +342,7 @@ class Game:
                 pygame.draw.circle(screen, (255, 255, 0, alpha), (int(point[0]), int(point[1])), 3)
         
         # 分数和关卡显示
-        font = pygame.font.Font(None, 32)
+        font = get_chinese_font(32)
         text = font.render(f"得分: {self.score}", True, WHITE)
         screen.blit(text, (20, 20))
         

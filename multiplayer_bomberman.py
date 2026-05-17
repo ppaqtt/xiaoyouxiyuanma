@@ -1,10 +1,31 @@
 import pygame
+import os
 import random
 import sys
 import struct
 import math
 
 pygame.init()
+
+
+# 尝试使用中文字体
+def get_chinese_font(size):
+    """获取支持中文的字体"""
+    font_names = [
+        "C:/Windows/Fonts/simsun.ttc",  # 宋体
+        "C:/Windows/Fonts/msyh.ttc",    # 微软雅黑
+        "C:/Windows/Fonts/simhei.ttf",  # 黑体
+        "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",  # Linux
+        "/System/Library/Fonts/PingFang.ttc",  # macOS
+    ]
+    for font_name in font_names:
+        if os.path.exists(font_name):
+            try:
+                return pygame.font.Font(font_name, size)
+            except:
+                continue
+    return get_chinese_font(size)
+
 try:
     pygame.mixer.init()
     mixer_available = True
@@ -364,14 +385,14 @@ class Game:
         for player in self.players:
             if player.alive:
                 pygame.draw.rect(screen, player.color, (player.x, player.y, player.width, player.height))
-                font = pygame.font.Font(None, 24)
+                font = get_chinese_font(24)
                 text = font.render(str(player.player_id + 1), True, BLACK)
                 screen.blit(text, (player.x + player.width//2 - text.get_width()//2, player.y + player.height//2 - text.get_height()//2))
         
         self.draw_ui()
     
     def draw_ui(self):
-        font = pygame.font.Font(None, 24)
+        font = get_chinese_font(24)
         y_pos = 10
         for i, player in enumerate(self.players):
             status = f"玩家{i+1}: "
@@ -387,14 +408,14 @@ class Game:
     
     def draw_gameover(self):
         screen.fill(BLACK)
-        font = pygame.font.Font(None, 72)
+        font = get_chinese_font(72)
         if self.winner:
             text = font.render(f"玩家 {self.winner.player_id + 1} 获胜!", True, self.winner.color)
         else:
             text = font.render("平局!", True, GRAY)
         screen.blit(text, (SCREEN_WIDTH // 2 - text.get_width() // 2, 200))
         
-        font = pygame.font.Font(None, 36)
+        font = get_chinese_font(36)
         restart_text = font.render("按 R 重新开始", True, WHITE)
         screen.blit(restart_text, (SCREEN_WIDTH // 2 - restart_text.get_width() // 2, 350))
 
@@ -405,15 +426,15 @@ class Menu:
     
     def draw(self):
         screen.fill(BLACK)
-        font = pygame.font.Font(None, 72)
+        font = get_chinese_font(72)
         title = font.render("多人炸弹人", True, YELLOW)
         screen.blit(title, (SCREEN_WIDTH // 2 - title.get_width() // 2, 100))
         
-        font = pygame.font.Font(None, 48)
+        font = get_chinese_font(48)
         player_text = font.render(f"玩家数量: {self.selected_players}", True, WHITE)
         screen.blit(player_text, (SCREEN_WIDTH // 2 - player_text.get_width() // 2, 250))
         
-        font = pygame.font.Font(None, 36)
+        font = get_chinese_font(36)
         instructions = [
             "操作说明：",
             "玩家1: WASD移动, 空格放炸弹",

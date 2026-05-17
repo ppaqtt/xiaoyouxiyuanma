@@ -1,11 +1,32 @@
 
 import pygame
+import os
 import sys
 import random
 import math
 
 # 初始化pygame
 pygame.init()
+
+
+
+# 尝试使用中文字体
+def get_chinese_font(size):
+    """获取支持中文的字体"""
+    font_names = [
+        "C:/Windows/Fonts/simsun.ttc",  # 宋体
+        "C:/Windows/Fonts/msyh.ttc",    # 微软雅黑
+        "C:/Windows/Fonts/simhei.ttf",  # 黑体
+        "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",  # Linux
+        "/System/Library/Fonts/PingFang.ttc",  # macOS
+    ]
+    for font_name in font_names:
+        if os.path.exists(font_name):
+            try:
+                return pygame.font.Font(font_name, size)
+            except:
+                continue
+    return get_chinese_font(size)
 
 # 游戏配置
 SCREEN_WIDTH = 800
@@ -24,9 +45,9 @@ RED = (255, 99, 71)
 YELLOW = (255, 255, 0)
 
 # 字体
-FONT_SMALL = pygame.font.Font(None, 24)
-FONT_MEDIUM = pygame.font.Font(None, 32)
-FONT_LARGE = pygame.font.Font(None, 48)
+FONT_SMALL = get_chinese_font(24)
+FONT_MEDIUM = get_chinese_font(32)
+FONT_LARGE = get_chinese_font(48)
 
 # 创建屏幕
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))

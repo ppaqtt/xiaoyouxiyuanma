@@ -1,9 +1,30 @@
 import pygame
+import os
 import random
 import math
 import sys
 
 pygame.init()
+
+
+# 尝试使用中文字体
+def get_chinese_font(size):
+    """获取支持中文的字体"""
+    font_names = [
+        "C:/Windows/Fonts/simsun.ttc",  # 宋体
+        "C:/Windows/Fonts/msyh.ttc",    # 微软雅黑
+        "C:/Windows/Fonts/simhei.ttf",  # 黑体
+        "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",  # Linux
+        "/System/Library/Fonts/PingFang.ttc",  # macOS
+    ]
+    for font_name in font_names:
+        if os.path.exists(font_name):
+            try:
+                return pygame.font.Font(font_name, size)
+            except:
+                continue
+    return get_chinese_font(size)
+
 try:
     pygame.mixer.init()
     sound_enabled = True
@@ -184,7 +205,7 @@ def draw_ui(surface):
     pygame.draw.rect(surface, DARK_GRAY, ui_rect)
     pygame.draw.line(surface, GRAY, (0, SCREEN_HEIGHT - 150), (SCREEN_WIDTH, SCREEN_HEIGHT - 150), 3)
     
-    font = pygame.font.Font(None, 24)
+    font = get_chinese_font(24)
     resource_x = 20
     resource_y = SCREEN_HEIGHT - 130
     for resource, value in RESOURCES.items():
@@ -207,13 +228,13 @@ def draw_ui(surface):
         if selected_building == type_:
             pygame.draw.rect(surface, CYAN, button_rect, 5)
         
-        name_surface = pygame.font.Font(None, 20).render(data['name'], True, BLACK)
+        name_surface = get_chinese_font(20).render(data['name'], True, BLACK)
         surface.blit(name_surface, (building_x + 10, building_y + 5))
         
         cost_y = building_y + 25
         for res, cost in data['cost'].items():
             cost_text = f"{RESOURCE_NAMES[res]}: {cost}"
-            cost_surface = pygame.font.Font(None, 16).render(cost_text, True, BLACK)
+            cost_surface = get_chinese_font(16).render(cost_text, True, BLACK)
             surface.blit(cost_surface, (building_x + 10, cost_y))
             cost_y += 15
         

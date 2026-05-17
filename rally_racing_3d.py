@@ -1,4 +1,5 @@
 import pygame
+import os
 import sys
 import math
 import random
@@ -7,6 +8,26 @@ import time
 
 # 初始化pygame
 pygame.init()
+
+
+
+# 尝试使用中文字体
+def get_chinese_font(size):
+    """获取支持中文的字体"""
+    font_names = [
+        "C:/Windows/Fonts/simsun.ttc",  # 宋体
+        "C:/Windows/Fonts/msyh.ttc",    # 微软雅黑
+        "C:/Windows/Fonts/simhei.ttf",  # 黑体
+        "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",  # Linux
+        "/System/Library/Fonts/PingFang.ttc",  # macOS
+    ]
+    for font_name in font_names:
+        if os.path.exists(font_name):
+            try:
+                return pygame.font.Font(font_name, size)
+            except:
+                continue
+    return get_chinese_font(size)
 
 # 屏幕设置
 SCREEN_WIDTH = 800
@@ -354,17 +375,17 @@ def draw_menu():
     screen.fill(GREEN)
     
     # 标题
-    font = pygame.font.Font(None, 72)
+    font = get_chinese_font(72)
     title_text = font.render("拉力赛车3D", True, WHITE)
     screen.blit(title_text, (SCREEN_WIDTH//2 - title_text.get_width()//2, 100))
     
     # 场景选择
-    font = pygame.font.Font(None, 36)
+    font = get_chinese_font(36)
     scene_text = font.render(f"场景: {scenes[current_scene]}", True, WHITE)
     screen.blit(scene_text, (SCREEN_WIDTH//2 - scene_text.get_width()//2, 250))
     
     # 最佳成绩
-    font = pygame.font.Font(None, 28)
+    font = get_chinese_font(28)
     for i, scene in enumerate(scenes):
         if scene in best_times:
             best_time = best_times[scene]
@@ -372,7 +393,7 @@ def draw_menu():
             screen.blit(time_text, (SCREEN_WIDTH//2 - time_text.get_width()//2, 300 + i*30))
     
     # 操作说明
-    font = pygame.font.Font(None, 24)
+    font = get_chinese_font(24)
     instructions = [
         "操作说明:",
         "↑ 加速",
@@ -398,11 +419,11 @@ def draw_paused():
     overlay.fill(BLACK)
     screen.blit(overlay, (0, 0))
     
-    font = pygame.font.Font(None, 64)
+    font = get_chinese_font(64)
     paused_text = font.render("游戏暂停", True, WHITE)
     screen.blit(paused_text, (SCREEN_WIDTH//2 - paused_text.get_width()//2, SCREEN_HEIGHT//2 - 50))
     
-    font = pygame.font.Font(None, 32)
+    font = get_chinese_font(32)
     resume_text = font.render("按空格键继续", True, YELLOW)
     screen.blit(resume_text, (SCREEN_WIDTH//2 - resume_text.get_width()//2, SCREEN_HEIGHT//2 + 20))
 
@@ -410,23 +431,23 @@ def draw_game_over():
     """绘制游戏结束界面"""
     screen.fill(BLACK)
     
-    font = pygame.font.Font(None, 64)
+    font = get_chinese_font(64)
     game_over_text = font.render("比赛完成!", True, GREEN)
     screen.blit(game_over_text, (SCREEN_WIDTH//2 - game_over_text.get_width()//2, 100))
     
     elapsed_time = time.time() - start_time
-    font = pygame.font.Font(None, 48)
+    font = get_chinese_font(48)
     time_text = font.render(f"用时: {elapsed_time:.2f}秒", True, WHITE)
     screen.blit(time_text, (SCREEN_WIDTH//2 - time_text.get_width()//2, 200))
     
     scene_name = scenes[current_scene]
     if scene_name in best_times:
         best_time = best_times[scene_name]
-        font = pygame.font.Font(None, 36)
+        font = get_chinese_font(36)
         best_text = font.render(f"最佳成绩: {best_time:.2f}秒", True, YELLOW)
         screen.blit(best_text, (SCREEN_WIDTH//2 - best_text.get_width()//2, 280))
     
-    font = pygame.font.Font(None, 32)
+    font = get_chinese_font(32)
     restart_text = font.render("按 Enter 重新开始", True, WHITE)
     screen.blit(restart_text, (SCREEN_WIDTH//2 - restart_text.get_width()//2, 380))
     
@@ -435,7 +456,7 @@ def draw_game_over():
 
 def draw_hud():
     """绘制HUD"""
-    font = pygame.font.Font(None, 24)
+    font = get_chinese_font(24)
     
     # 速度表
     speed_text = font.render(f"速度: {int(car_speed * 10)} km/h", True, WHITE)

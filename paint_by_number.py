@@ -1,9 +1,30 @@
 import pygame
+import os
 import sys
 import random
 import math
 
 pygame.init()
+
+
+
+# 尝试使用中文字体
+def get_chinese_font(size):
+    """获取支持中文的字体"""
+    font_names = [
+        "C:/Windows/Fonts/simsun.ttc",  # 宋体
+        "C:/Windows/Fonts/msyh.ttc",    # 微软雅黑
+        "C:/Windows/Fonts/simhei.ttf",  # 黑体
+        "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",  # Linux
+        "/System/Library/Fonts/PingFang.ttc",  # macOS
+    ]
+    for font_name in font_names:
+        if os.path.exists(font_name):
+            try:
+                return pygame.font.Font(font_name, size)
+            except:
+                continue
+    return get_chinese_font(size)
 
 SCREEN_WIDTH = 900
 SCREEN_HEIGHT = 700
@@ -187,8 +208,8 @@ class PaintByNumber:
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         pygame.display.set_caption("数字油画 - Paint By Number")
         self.clock = pygame.time.Clock()
-        self.font = pygame.font.Font(None, 28)
-        self.large_font = pygame.font.Font(None, 48)
+        self.font = get_chinese_font(28)
+        self.large_font = get_chinese_font(48)
         
         self.click_sound = generate_sound(800, 0.1, 0.3)
         self.complete_sound = generate_sound(523, 0.15, 0.4)

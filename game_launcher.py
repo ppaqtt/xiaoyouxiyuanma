@@ -38,7 +38,7 @@ def get_chinese_font(size):
             except:
                 continue
     # 如果找不到中文字体，使用默认字体
-    return pygame.font.Font(None, size)
+    return get_chinese_font(size)
 
 font_large = get_chinese_font(48)
 font_medium = get_chinese_font(32)

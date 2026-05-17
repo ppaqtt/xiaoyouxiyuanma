@@ -1,10 +1,31 @@
 import pygame
+import os
 import sys
 import math
 import time
 
 # 初始化Pygame
 pygame.init()
+
+
+
+# 尝试使用中文字体
+def get_chinese_font(size):
+    """获取支持中文的字体"""
+    font_names = [
+        "C:/Windows/Fonts/simsun.ttc",  # 宋体
+        "C:/Windows/Fonts/msyh.ttc",    # 微软雅黑
+        "C:/Windows/Fonts/simhei.ttf",  # 黑体
+        "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",  # Linux
+        "/System/Library/Fonts/PingFang.ttc",  # macOS
+    ]
+    for font_name in font_names:
+        if os.path.exists(font_name):
+            try:
+                return pygame.font.Font(font_name, size)
+            except:
+                continue
+    return get_chinese_font(size)
 
 # 游戏配置
 SCREEN_WIDTH = 800
@@ -129,7 +150,7 @@ class HopscotchGame:
                 pygame.draw.rect(self.screen, BLACK, (x, y, cell_size, cell_size), 3)
                 
                 # 绘制数字
-                font = pygame.font.Font(None, 64)
+                font = get_chinese_font(64)
                 text = font.render(str(cell_num), True, WHITE)
                 text_rect = text.get_rect(center=(x + cell_size//2, y + cell_size//2))
                 self.screen.blit(text, text_rect)
@@ -139,7 +160,7 @@ class HopscotchGame:
         pygame.draw.rect(self.screen, start_color, (start_x + cell_size + margin - 50, start_y + 3 * (cell_size + margin) + 20, 100, 60))
         pygame.draw.rect(self.screen, BLACK, (start_x + cell_size + margin - 50, start_y + 3 * (cell_size + margin) + 20, 100, 60), 3)
         
-        font = pygame.font.Font(None, 36)
+        font = get_chinese_font(36)
         text = font.render("起点", True, WHITE)
         text_rect = text.get_rect(center=(start_x + cell_size + margin, start_y + 3 * (cell_size + margin) + 50))
         self.screen.blit(text, text_rect)
@@ -168,7 +189,7 @@ class HopscotchGame:
     
     def draw_hud(self):
         """绘制游戏界面信息"""
-        font = pygame.font.Font(None, 36)
+        font = get_chinese_font(36)
         
         # 当前关卡
         level_info = LEVELS[self.current_level]
@@ -194,9 +215,9 @@ class HopscotchGame:
         """绘制主菜单"""
         self.screen.fill(WHITE)
         
-        font_large = pygame.font.Font(None, 72)
-        font_medium = pygame.font.Font(None, 48)
-        font_small = pygame.font.Font(None, 36)
+        font_large = get_chinese_font(72)
+        font_medium = get_chinese_font(48)
+        font_small = get_chinese_font(36)
         
         # 标题
         title = font_large.render("跳房子游戏", True, BLUE)
@@ -240,9 +261,9 @@ class HopscotchGame:
         """绘制胜利界面"""
         self.screen.fill(GREEN)
         
-        font_large = pygame.font.Font(None, 72)
-        font_medium = pygame.font.Font(None, 48)
-        font_small = pygame.font.Font(None, 36)
+        font_large = get_chinese_font(72)
+        font_medium = get_chinese_font(48)
+        font_small = get_chinese_font(36)
         
         # 胜利文字
         title = font_large.render("恭喜过关！", True, WHITE)
@@ -278,9 +299,9 @@ class HopscotchGame:
         """绘制失败界面"""
         self.screen.fill(RED)
         
-        font_large = pygame.font.Font(None, 72)
-        font_medium = pygame.font.Font(None, 48)
-        font_small = pygame.font.Font(None, 36)
+        font_large = get_chinese_font(72)
+        font_medium = get_chinese_font(48)
+        font_small = get_chinese_font(36)
         
         # 失败文字
         title = font_large.render("游戏失败", True, WHITE)

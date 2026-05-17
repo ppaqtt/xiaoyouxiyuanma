@@ -1,10 +1,31 @@
 import pygame
+import os
 import sys
 import random
 import math
 
 # 初始化pygame
 pygame.init()
+
+
+
+# 尝试使用中文字体
+def get_chinese_font(size):
+    """获取支持中文的字体"""
+    font_names = [
+        "C:/Windows/Fonts/simsun.ttc",  # 宋体
+        "C:/Windows/Fonts/msyh.ttc",    # 微软雅黑
+        "C:/Windows/Fonts/simhei.ttf",  # 黑体
+        "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",  # Linux
+        "/System/Library/Fonts/PingFang.ttc",  # macOS
+    ]
+    for font_name in font_names:
+        if os.path.exists(font_name):
+            try:
+                return pygame.font.Font(font_name, size)
+            except:
+                continue
+    return get_chinese_font(size)
 
 # 游戏常量
 SCREEN_WIDTH = 900
@@ -165,7 +186,7 @@ class Game:
                            (SCREEN_WIDTH - 45, 60 + i), 3)
         
         # 绘制跑道数字
-        font = pygame.font.Font(None, 24)
+        font = get_chinese_font(24)
         for lane in range(4):
             text = font.render(f"{lane + 1}", True, WHITE)
             screen.blit(text, (20, 85 + lane * 80))
@@ -173,9 +194,9 @@ class Game:
     def draw_menu(self):
         screen.fill(BLACK)
         
-        font_large = pygame.font.Font(None, 72)
-        font_medium = pygame.font.Font(None, 36)
-        font_small = pygame.font.Font(None, 24)
+        font_large = get_chinese_font(72)
+        font_medium = get_chinese_font(36)
+        font_small = get_chinese_font(24)
         
         title = font_large.render("100米短跑", True, RED)
         screen.blit(title, (SCREEN_WIDTH//2 - title.get_width()//2, 80))
@@ -220,8 +241,8 @@ class Game:
     def draw_ready_set_go(self):
         self.draw_track()
         
-        font_large = pygame.font.Font(None, 96)
-        font_medium = pygame.font.Font(None, 36)
+        font_large = get_chinese_font(96)
+        font_medium = get_chinese_font(36)
         
         if self.game_state == 'ready':
             text = font_large.render("准备...", True, YELLOW)
@@ -241,7 +262,7 @@ class Game:
     def draw_racing(self):
         self.draw_track()
         
-        font_small = pygame.font.Font(None, 24)
+        font_small = get_chinese_font(24)
         
         for i, player in enumerate(self.players[:self.selected_players]):
             player.draw()
@@ -261,9 +282,9 @@ class Game:
     def draw_finished(self):
         self.draw_track()
         
-        font_large = pygame.font.Font(None, 48)
-        font_medium = pygame.font.Font(None, 36)
-        font_small = pygame.font.Font(None, 24)
+        font_large = get_chinese_font(48)
+        font_medium = get_chinese_font(36)
+        font_small = get_chinese_font(24)
         
         # 绘制结果面板
         panel_width = 400

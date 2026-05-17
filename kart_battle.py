@@ -1,4 +1,5 @@
 import pygame
+import os
 import sys
 import random
 import math
@@ -6,6 +7,26 @@ import struct
 
 # 初始化Pygame
 pygame.init()
+
+
+
+# 尝试使用中文字体
+def get_chinese_font(size):
+    """获取支持中文的字体"""
+    font_names = [
+        "C:/Windows/Fonts/simsun.ttc",  # 宋体
+        "C:/Windows/Fonts/msyh.ttc",    # 微软雅黑
+        "C:/Windows/Fonts/simhei.ttf",  # 黑体
+        "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",  # Linux
+        "/System/Library/Fonts/PingFang.ttc",  # macOS
+    ]
+    for font_name in font_names:
+        if os.path.exists(font_name):
+            try:
+                return pygame.font.Font(font_name, size)
+            except:
+                continue
+    return get_chinese_font(size)
 
 # 游戏配置
 SCREEN_WIDTH = 1200
@@ -135,7 +156,7 @@ class Item:
         pygame.draw.circle(screen, color, (int(self.x), int(self.y)), int(self.radius * scale))
         pygame.draw.circle(screen, WHITE, (int(self.x), int(self.y)), int(self.radius * scale), 2)
         
-        font = pygame.font.Font(None, 20)
+        font = get_chinese_font(20)
         text = font.render(ITEM_TYPES[self.item_type]['symbol'], True, BLACK)
         text_rect = text.get_rect(center=(self.x, self.y))
         screen.blit(text, text_rect)
@@ -158,7 +179,7 @@ class Mine:
     def draw(self, screen):
         pygame.draw.circle(screen, PURPLE, (int(self.x), int(self.y)), self.radius)
         pygame.draw.circle(screen, BLACK, (int(self.x), int(self.y)), self.radius, 2)
-        font = pygame.font.Font(None, 16)
+        font = get_chinese_font(16)
         text = font.render('💣', True, BLACK)
         text_rect = text.get_rect(center=(self.x, self.y))
         screen.blit(text, text_rect)
@@ -372,7 +393,7 @@ class Kart:
                 pygame.draw.circle(screen, YELLOW, (int(tail_x), int(tail_y)), 6 - i)
         
         # 绘制玩家编号
-        font = pygame.font.Font(None, 20)
+        font = get_chinese_font(20)
         text = font.render(str(self.player_num), True, WHITE)
         text_rect = text.get_rect(center=(self.x, self.y))
         screen.blit(text, text_rect)
@@ -562,14 +583,14 @@ class KartBattleGame:
         for i, (cx, cy) in enumerate(track.checkpoints):
             pygame.draw.circle(screen, YELLOW, (int(cx), int(cy)), 20)
             pygame.draw.circle(screen, BLACK, (int(cx), int(cy)), 15)
-            font = pygame.font.Font(None, 20)
+            font = get_chinese_font(20)
             text = font.render(str(i + 1), True, WHITE)
             text_rect = text.get_rect(center=(cx, cy))
             screen.blit(text, text_rect)
     
     def draw_ui(self):
         screen = self.screen
-        font = pygame.font.Font(None, 28)
+        font = get_chinese_font(28)
         
         # 显示玩家信息
         for i, kart in enumerate(self.karts):
@@ -604,7 +625,7 @@ class KartBattleGame:
         
         # 倒计时显示
         if self.countdown > 0:
-            big_font = pygame.font.Font(None, 120)
+            big_font = get_chinese_font(120)
             countdown_text = big_font.render(str(self.countdown), True, RED)
             text_rect = countdown_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
             screen.blit(countdown_text, text_rect)
@@ -615,12 +636,12 @@ class KartBattleGame:
         
         # 获胜显示
         if self.winner:
-            big_font = pygame.font.Font(None, 80)
+            big_font = get_chinese_font(80)
             winner_text = big_font.render(f'🎉 玩家 {self.winner.player_num} 获胜!', True, YELLOW)
             text_rect = winner_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
             screen.blit(winner_text, text_rect)
             
-            small_font = pygame.font.Font(None, 36)
+            small_font = get_chinese_font(36)
             restart_text = small_font.render('按 R 键重新开始，按 ESC 返回菜单', True, WHITE)
             restart_rect = restart_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 60))
             screen.blit(restart_text, restart_rect)
@@ -630,13 +651,13 @@ class KartBattleGame:
         screen.fill(BLACK)
         
         # 标题
-        title_font = pygame.font.Font(None, 80)
+        title_font = get_chinese_font(80)
         title = title_font.render('卡丁车道具赛', True, WHITE)
         title_rect = title.get_rect(center=(SCREEN_WIDTH // 2, 150))
         screen.blit(title, title_rect)
         
         # 菜单选项
-        menu_font = pygame.font.Font(None, 48)
+        menu_font = get_chinese_font(48)
         options = ['单人模式', '双人模式', '选择赛道', '退出游戏']
         
         for i, option in enumerate(options):
@@ -651,7 +672,7 @@ class KartBattleGame:
             screen.blit(text, text_rect)
         
         # 道具说明
-        info_font = pygame.font.Font(None, 28)
+        info_font = get_chinese_font(28)
         item_examples = [
             ('⚡ 加速', '提升速度'),
             ('🚀 导弹', '攻击对手'),
@@ -671,12 +692,12 @@ class KartBattleGame:
         screen = self.screen
         screen.fill(BLACK)
         
-        title_font = pygame.font.Font(None, 60)
+        title_font = get_chinese_font(60)
         title = title_font.render('选择赛道', True, WHITE)
         title_rect = title.get_rect(center=(SCREEN_WIDTH // 2, 100))
         screen.blit(title, title_rect)
         
-        track_font = pygame.font.Font(None, 48)
+        track_font = get_chinese_font(48)
         for i, track in enumerate(self.tracks):
             y_pos = 250 + i * 100
             text = track_font.render(track.name, True, WHITE)
@@ -688,7 +709,7 @@ class KartBattleGame:
             
             screen.blit(text, text_rect)
         
-        back_font = pygame.font.Font(None, 36)
+        back_font = get_chinese_font(36)
         back_text = back_font.render('按 ESC 返回', True, WHITE)
         screen.blit(back_text, (SCREEN_WIDTH // 2 - 80, SCREEN_HEIGHT - 50))
         

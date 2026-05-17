@@ -1,9 +1,30 @@
 import pygame
+import os
 import random
 import math
 import sys
 
 pygame.init()
+
+
+# 尝试使用中文字体
+def get_chinese_font(size):
+    """获取支持中文的字体"""
+    font_names = [
+        "C:/Windows/Fonts/simsun.ttc",  # 宋体
+        "C:/Windows/Fonts/msyh.ttc",    # 微软雅黑
+        "C:/Windows/Fonts/simhei.ttf",  # 黑体
+        "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",  # Linux
+        "/System/Library/Fonts/PingFang.ttc",  # macOS
+    ]
+    for font_name in font_names:
+        if os.path.exists(font_name):
+            try:
+                return pygame.font.Font(font_name, size)
+            except:
+                continue
+    return get_chinese_font(size)
+
 pygame.mixer.init()
 
 SCREEN_WIDTH = 800
@@ -63,10 +84,10 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("音乐方块消消乐")
 clock = pygame.time.Clock()
 
-font_large = pygame.font.Font(None, 56)
-font_medium = pygame.font.Font(None, 40)
-font_small = pygame.font.Font(None, 28)
-font_tiny = pygame.font.Font(None, 22)
+font_large = get_chinese_font(56)
+font_medium = get_chinese_font(40)
+font_small = get_chinese_font(28)
+font_tiny = get_chinese_font(22)
 
 class SoundGenerator:
     @staticmethod
@@ -537,7 +558,7 @@ class Game:
             screen.blit(hint, (SCREEN_WIDTH // 2 - hint.get_width() // 2, 10))
 
     def draw_note_label(self, x, y, note_type, size):
-        font = pygame.font.Font(None, size)
+        font = get_chinese_font(size)
         text = font.render(PIECE_NAMES[note_type], True, WHITE)
         rect = text.get_rect(center=(x, y))
         screen.blit(text, rect)

@@ -1,9 +1,30 @@
 import pygame
+import os
 import random
 import math
 import struct
 
 pygame.init()
+
+
+
+# 尝试使用中文字体
+def get_chinese_font(size):
+    """获取支持中文的字体"""
+    font_names = [
+        "C:/Windows/Fonts/simsun.ttc",  # 宋体
+        "C:/Windows/Fonts/msyh.ttc",    # 微软雅黑
+        "C:/Windows/Fonts/simhei.ttf",  # 黑体
+        "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",  # Linux
+        "/System/Library/Fonts/PingFang.ttc",  # macOS
+    ]
+    for font_name in font_names:
+        if os.path.exists(font_name):
+            try:
+                return pygame.font.Font(font_name, size)
+            except:
+                continue
+    return get_chinese_font(size)
 
 WIDTH, HEIGHT = 800, 600
 FPS = 60
@@ -24,9 +45,9 @@ COLORS = {
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("碰碰车乱斗")
 clock = pygame.time.Clock()
-font = pygame.font.Font(None, 28)
-font_large = pygame.font.Font(None, 56)
-font_small = pygame.font.Font(None, 22)
+font = get_chinese_font(28)
+font_large = get_chinese_font(56)
+font_small = get_chinese_font(22)
 
 def generate_sound(sound_type, duration_ms=200, sample_rate=22050):
     num_samples = int(sample_rate * duration_ms / 1000)
@@ -565,8 +586,8 @@ def draw_hud(surface, player1, player2, powerups):
 def show_start_screen():
     sounds = SoundManager()
     
-    title_font = pygame.font.Font(None, 72)
-    subtitle_font = pygame.font.Font(None, 36)
+    title_font = get_chinese_font(72)
+    subtitle_font = get_chinese_font(36)
     
     while True:
         for event in pygame.event.get():

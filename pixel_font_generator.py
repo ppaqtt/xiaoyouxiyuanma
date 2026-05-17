@@ -5,6 +5,26 @@ import os
 # 初始化Pygame
 pygame.init()
 
+
+
+# 尝试使用中文字体
+def get_chinese_font(size):
+    """获取支持中文的字体"""
+    font_names = [
+        "C:/Windows/Fonts/simsun.ttc",  # 宋体
+        "C:/Windows/Fonts/msyh.ttc",    # 微软雅黑
+        "C:/Windows/Fonts/simhei.ttf",  # 黑体
+        "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",  # Linux
+        "/System/Library/Fonts/PingFang.ttc",  # macOS
+    ]
+    for font_name in font_names:
+        if os.path.exists(font_name):
+            try:
+                return pygame.font.Font(font_name, size)
+            except:
+                continue
+    return get_chinese_font(size)
+
 # 配置参数
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
@@ -159,7 +179,7 @@ class PixelFontGenerator:
                         (self.preview_x - 5, self.preview_y - 5, 300, 250), 2)
         
         # 标题
-        font = pygame.font.Font(None, 24)
+        font = get_chinese_font(24)
         text = font.render('字体预览', True, COLORS['white'])
         self.screen.blit(text, (self.preview_x, self.preview_y))
         
@@ -205,19 +225,19 @@ class PixelFontGenerator:
         
         # 绘制按钮
         pygame.draw.rect(self.screen, COLORS['green'], self.export_button)
-        font = pygame.font.Font(None, 24)
+        font = get_chinese_font(24)
         text = font.render('导出字体', True, COLORS['black'])
         text_rect = text.get_rect(center=(self.export_button[0] + self.export_button[2]//2, 
                                           self.export_button[1] + self.export_button[3]//2))
         self.screen.blit(text, text_rect)
         
         # 绘制当前字符显示
-        font = pygame.font.Font(None, 36)
+        font = get_chinese_font(36)
         text = font.render(f'当前字符: {self.current_char}', True, COLORS['white'])
         self.screen.blit(text, (50, 380))
         
         # 绘制提示
-        font = pygame.font.Font(None, 18)
+        font = get_chinese_font(18)
         text = font.render('左键绘制 | 右键擦除 | 点击字符选择', True, COLORS['gray'])
         self.screen.blit(text, (50, 520))
         

@@ -1,10 +1,31 @@
 import pygame
+import os
 import random
 import math
 import struct
 import io
 
 pygame.init()
+
+
+
+# 尝试使用中文字体
+def get_chinese_font(size):
+    """获取支持中文的字体"""
+    font_names = [
+        "C:/Windows/Fonts/simsun.ttc",  # 宋体
+        "C:/Windows/Fonts/msyh.ttc",    # 微软雅黑
+        "C:/Windows/Fonts/simhei.ttf",  # 黑体
+        "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",  # Linux
+        "/System/Library/Fonts/PingFang.ttc",  # macOS
+    ]
+    for font_name in font_names:
+        if os.path.exists(font_name):
+            try:
+                return pygame.font.Font(font_name, size)
+            except:
+                continue
+    return get_chinese_font(size)
 
 WIDTH, HEIGHT = 800, 600
 GRID_TOP = 80
@@ -28,9 +49,9 @@ BUBBLE_COLORS = [RED, GREEN, BLUE, YELLOW, PURPLE, ORANGE]
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("魔法泡泡消除")
 clock = pygame.time.Clock()
-font_large = pygame.font.Font(None, 48)
-font_medium = pygame.font.Font(None, 32)
-font_small = pygame.font.Font(None, 24)
+font_large = get_chinese_font(48)
+font_medium = get_chinese_font(32)
+font_small = get_chinese_font(24)
 
 class SoundGenerator:
     def __init__(self):
@@ -207,14 +228,14 @@ class Bubble:
         if self.bubble_type == "bomb":
             pygame.draw.circle(surface, BOMB_COLOR, (int(self.x), int(self.y)), draw_radius)
             pygame.draw.circle(surface, (80, 80, 80), (int(self.x), int(self.y)), draw_radius, 3)
-            font_tiny = pygame.font.Font(None, 20)
+            font_tiny = get_chinese_font(20)
             text = font_tiny.render("💣", True, (255, 255, 255))
             text_rect = text.get_rect(center=(int(self.x), int(self.y)))
             surface.blit(text, text_rect)
         elif self.bubble_type == "lightning":
             pygame.draw.circle(surface, LIGHTNING_COLOR, (int(self.x), int(self.y)), draw_radius)
             pygame.draw.circle(surface, (255, 255, 255), (int(self.x), int(self.y)), draw_radius, 2)
-            font_tiny = pygame.font.Font(None, 20)
+            font_tiny = get_chinese_font(20)
             text = font_tiny.render("⚡", True, (255, 255, 0))
             text_rect = text.get_rect(center=(int(self.x), int(self.y)))
             surface.blit(text, text_rect)
@@ -739,13 +760,13 @@ class Game:
         if isinstance(self.next_color, str):
             if self.next_color == "bomb":
                 pygame.draw.circle(screen, BOMB_COLOR, (preview_x, preview_y), BUBBLE_RADIUS)
-                font_tiny = pygame.font.Font(None, 18)
+                font_tiny = get_chinese_font(18)
                 text = font_tiny.render("💣", True, (255, 255, 255))
                 text_rect = text.get_rect(center=(preview_x, preview_y))
                 screen.blit(text, text_rect)
             elif self.next_color == "lightning":
                 pygame.draw.circle(screen, LIGHTNING_COLOR, (preview_x, preview_y), BUBBLE_RADIUS)
-                font_tiny = pygame.font.Font(None, 18)
+                font_tiny = get_chinese_font(18)
                 text = font_tiny.render("⚡", True, (255, 255, 0))
                 text_rect = text.get_rect(center=(preview_x, preview_y))
                 screen.blit(text, text_rect)
